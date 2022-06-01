@@ -1,0 +1,208 @@
+header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1366px;
+    padding: 0 16px;
+    z-index: 6;
+    background-color: #fff;
+}
+header .top-header {
+    display: flex;
+    padding: 12px 0;
+    width: 100%;
+}
+.top-right-header {
+    display: flex;
+    align-items: center;
+    width: 84%;
+}
+.logo {
+    width: 115px;
+    height: 30px;
+    margin-left: 20px;
+    background: url("../../Image/logo.svg") no-repeat;
+}
+.search-box {
+    position: relative;
+    width: 600px;
+    height: 44px;
+    padding: 0 16px;
+    background-color: #f0f0f1;
+    border-radius: 8px;
+    transition: background-color 0.3s linear;
+    -webkit-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+}
+.search-box::before {
+    content: "\e089";
+    color: #a1a3a8;
+    width: 0;
+    height: 0;
+    font-size: 26px;
+    font-family: digikala;
+    position: absolute;
+    right: 12px;
+    top: 3px;
+    z-index: 2;
+    transition: color 0.3s linear;
+}
+.search-box-focus::before {
+    color: #444 !important ;
+}
+.search {
+    position: relative;
+    font-family: "IranYekan_Fa";
+    font-weight: normal;
+    padding: 0 33px 0 0;
+    background-color: #f0f0f1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-bottom: 1px solid #f0f0f1;
+    z-index: 1;
+    transition: background-color 0.3s linear, border 0.3s linear;
+    -webkit-transition: background-color 0.3s linear, border 0.3s linear;
+    -moz-transition: background-color 0.3s linear, border 0.3s linear;
+}
+.search-focus {
+    background-color: #fff !important;
+    border-bottom: 1px solid #335fcf !important;
+}
+.search-result {
+    opacity: 0;
+    visibility: collapse;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px -4px;
+    padding: 44px 16px 10px 16px;
+    z-index: 0;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+}
+.search-result-focus {
+    opacity: 1;
+    visibility: visible;
+}
+.result-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 0;
+}
+.result-text > span,
+div.top-group a {
+    display: flex;
+    border: 1px solid #ccc;
+    width: max-content;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+.result-text .text {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    font-size: 14px;
+}
+.result-text .remove {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    color: rgb(194, 43, 5);
+    width: max-content;
+    height: max-content;
+    cursor: pointer;
+}
+
+.top-search > div,
+div.top-group,
+.result-text > div {
+    display: flex;
+    color: #444;
+}
+.top-search > div div,
+.result-text > div div {
+    margin-left: 20px;
+}
+div.top-group a {
+    font-size: 14px;
+    color: #444;
+}
+.top-left-header {
+    width: 16%;
+    min-width: 202px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end ;
+}
+.users-operation {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 8px;
+}
+.users-operation a {
+    font-size: 13px;
+    color: #444;
+    padding: 10px 0;
+    font-weight: bold;
+    transition: color 0.1s linear;
+}
+.users-operation a:hover {
+    color: #747474;
+}
+.users-operation span {
+    border-right: 1px solid #444;
+    height: 20px;
+    margin: 0 8px;
+}
+.users-operation .icon {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 8px;
+    font-size: 24px;
+}
+.top-left-header > span {
+    border-right: 1px solid #ccc;
+    height: 30px;
+    margin: 0 10px;
+}
+.cart a {
+    display: flex;
+    align-items: center;
+    color: #444;
+    padding: 0 10px;
+    transition: color 0.1s linear;
+}
+.cart a:hover {
+    color: #747474;
+}
+.cart-icon {
+    transform: rotateY(180deg);
+    font-size: 1.5rem;
+}
+
+div.overly {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-color: #000;
+    opacity: 0;
+    visibility: collapse;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s linear;
+}
+div.overly-visible {
+    opacity: 0.3;
+    visibility: visible;
+}

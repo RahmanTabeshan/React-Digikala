@@ -1,0 +1,8 @@
+@font-face {
+    font-family: digikala;
+	src: url('../Font/digikala.eot');
+	src: url('../Font/digikala.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+		 url('../Font/digikala.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../Font/digikala.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+		 url('../Font/digikala.ttf') format('truetype');
+}

@@ -1,0 +1,54 @@
+@import url("./Font/IranYekan_EnNum/Css/IranYekan_En.css");
+@import url("./Font/IranYekan_FaNum/Css/IranYekan_Fa.css");
+@import url("./Font/Digikala/Css/digikala.css");
+@import url("./Font/FontAwesome/css/all.min.css");
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+ol,
+ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a {
+    display: block;
+    text-decoration: none;
+}
+input:focus {
+    outline: none;
+    /* border: none; */
+}
+body {
+    position: relative ;
+    display: flex ;
+    align-items: center ;
+    justify-content: center ;
+    font-family: "IranYekan_Fa";
+    font-weight: 500;
+    font-size: 16px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#container {
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+    direction: rtl;
+    width: 100% ;
+}

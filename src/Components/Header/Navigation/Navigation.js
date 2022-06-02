@@ -1,4 +1,4 @@
-import "./" ;
+import "./Navigation.css" ;
 import { FaBars } from "react-icons/fa" ;
 import { useEffect , useRef } from "react";
 
@@ -11,12 +11,12 @@ const Navigation = () => {
     const title = useRef()
 
     useEffect(()=>{
-        const navItem = navList.current.childNodes ;
-        const bottomHover = bottomListHover.current ;
-        const topHover = topListHover.current ;
+        const navItem = document.querySelectorAll(".nav ul li") ;
+        const bottomHover = document.querySelector(".hover-bottom") ;
+        const topHover = document.querySelector(".hover-top") ;
         navItem.forEach( li =>{
                 li.addEventListener("mouseenter" , (e)=>{
-                    e.stopPropagation() ;
+                    // e.stopPropagation() ;
                     console.log(e.target) ;
                     let itemWidth = e.target.clientWidth ;
                     let itemLeft = e.target.offsetLeft ;
@@ -27,7 +27,7 @@ const Navigation = () => {
                     topHover.style.transform = "scalex(1)" ;
                     topHover.style.left = itemLeft+"px" ;
                 })
-                li.addEventListener("mouseout" , (e)=>{
+                li.addEventListener("mouseleave" , (e)=>{
                     bottomHover.style.transform = "scalex(0)" ;
                     topHover.style.transform = "scalex(0)" ;
                 })
@@ -44,7 +44,7 @@ const Navigation = () => {
                             <div>
                                 <FaBars />
                             </div>
-                            <p>دسته بندی کالاها</p>
+                            دسته بندی کالاها
                         </div>
                         <div className="sub-nav"></div>
                     </li>

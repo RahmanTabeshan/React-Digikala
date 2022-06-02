@@ -23,9 +23,9 @@ const Header = () => {
         }
     }
 
-    const Nav = useRef() ;
+    
     useEffect(()=>{
-        console.log(Nav)
+        
     },[])
 
     return (
@@ -46,7 +46,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <Navigation ref={Nav}/> 
+                <Navigation /> 
             </header>
             <div className={`overly ${focus ? "overly-visible" : ""}`} onClick={()=>setFocus(false)}></div>
         </>

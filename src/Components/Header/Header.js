@@ -1,4 +1,4 @@
-import { useRef, useState , useEffect } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import Search from "./Search/Search";
@@ -16,17 +16,12 @@ const Header = () => {
 
     const searchRef = useRef() ;
     const headClick = (e) => {
-        if(e.target.className.includes("header") || e.target.className.includes("logo") ){
+        if(e.target.className.includes("header") || e.target.className.includes("logo") ||e.target.className.includes("navigation") ){
             setFocus(false) ;
         }else if(e.target.className.includes("search-box")){
             searchRef.current.focus() ;
         }
     }
-
-    const Nav = useRef() ;
-    useEffect(()=>{
-        console.log(Nav)
-    },[])
 
     return (
         <>
@@ -46,7 +41,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <Navigation ref={Nav}/> 
+                <Navigation /> 
             </header>
             <div className={`overly ${focus ? "overly-visible" : ""}`} onClick={()=>setFocus(false)}></div>
         </>

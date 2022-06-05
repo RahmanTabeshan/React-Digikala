@@ -1,0 +1,119 @@
+.mega-nav {
+    opacity: 0;
+    visibility: collapse;
+    display: flex;
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    background-color: #ffffff10;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 0 5px #ccc;
+    cursor: default;
+    z-index: 1;
+    transition: all 0.2s linear;
+}
+.mega-nav-visible {
+    top: 40px;
+    opacity: 1;
+    visibility: visible;
+}
+.mega-nav-menu {
+    display: flex;
+    width: 15%;
+    min-width: 200px;
+    background-color: #ffffff10;
+    border-left: 1px solid #ccc;
+}
+.mega-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.mega-nav-menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: 16px 10px 16px 0;
+    color: #444;
+    font-size: 12.5px;
+    font-weight: bold;
+}
+.a-hover a {
+    background-color: #f5f5f5 !important;
+    color: #d52b00 !important ;
+}
+.mega-nav-menu a .icon {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    font-size: 16px;
+}
+.d-flex {
+    display: flex !important ;
+}
+.mega-nav-tabs {
+    width: 85%;
+    background-color: #fff;
+}
+.mega-nav-tabs div.tab-item {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+div.tab-item > div {
+    width: 100%;
+    padding: 20px;
+}
+div.tab-item > div > a {
+    display: flex;
+    align-items: center;
+    font-size: 12.5px;
+    color: #444;
+    width: max-content;
+}
+div.tab-item a:hover {
+    color: #c42700;
+}
+.tab-item a span.icon {
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+}
+div.tab-item ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    width: 100%;
+    height: 440px;
+}
+li.category-link {
+    position: relative ;
+    width: max-content ;
+    padding: 8px 0 8px 20px ;
+}
+li.category-link a::after {
+    content: "\e016";
+    font-family: digikala;
+    font-size: 12px ;
+    position: absolute ;
+    top: 9px ;
+    left: -8px ;
+}
+li.category-link a {
+    font-size: 14px ;
+    color: #444;
+    border-right: 2px solid #f30;
+}
+li.category-link a span {
+    padding-right: 10px  ;
+}
+li.sub-category-link {
+    width: max-content ;
+    padding: 8px 0 8px 20px ;
+}
+li.sub-category-link a {
+    font-size: 12px ;
+    color: #9e9e9e;
+}

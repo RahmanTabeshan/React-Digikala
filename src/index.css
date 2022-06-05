@@ -52,3 +52,6 @@ body {
     direction: rtl;
     width: 100% ;
 }
+main {
+    height: 2000px ;
+}

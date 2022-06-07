@@ -1,9 +1,9 @@
-import TabItem from "../TabItem/TabItem";
+import TabNavItem from "./TabNavItem/TabNavItem";
 
-const TabList = ({ tabList }) => {
+const TabListNav = ({ tabList }) => {
     return (
         tabList.map(item=>(
-            <TabItem
+            <TabNavItem
                 key={item.id}
                 className={item.className}
                 path={item.path}
@@ -13,4 +13,4 @@ const TabList = ({ tabList }) => {
     );
 };
 
-export default TabList;
+export default TabListNav;

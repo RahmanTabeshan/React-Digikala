@@ -1,17 +1,15 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./DesktopHeader.css";
-import Search from "../Common/Search/Search";
+import Styles from "./DesktopHeader.module.css"
+import Search from "./Search/Search";
+import UserOperation from "./UserOpration/UserOperation";
+import Navigation from "./Navigation/Navigation";
 import { RiShoppingCartLine } from "react-icons/ri";
-import UserOperation from "../Common/UserOpration/UserOperation";
-import Navigation from "../Common/Navigation/Navigation";
 
 const DesktopHeader = () => {
-    const [focus, setFocus] = useState(false);
 
-    const handleFocus = () => {
-        setFocus(true);
-    };
+    const [focus, setFocus] = useState(false);
 
     const searchRef = useRef();
     const headClick = (e) => {
@@ -28,18 +26,26 @@ const DesktopHeader = () => {
     useEffect(() => {
         if (!focus) {
             searchRef.current.blur();
+            document.body.style.overflow = "" ;
+        }else{
+            document.body.style.overflow = "hidden" ;
         }
     }, [focus]);
 
     return (
         <>
-            <header className='header' onClick={headClick}>
+            <div
+                className={`overly ${focus ? "overly-visible" : ""}`}
+                onClick={() => setFocus(false)}
+            >
+            </div>
+            <header className={`header ${Styles.header}`} onClick={headClick}>
                 <div className='top-header'>
                     <div className='top-right-header'>
                         <Link className='logo' to='/'></Link>
                         <Search
                             focus={focus}
-                            onFocus={handleFocus}
+                            setFocus={setFocus}
                             ref={searchRef}
                         />
                     </div>
@@ -55,9 +61,6 @@ const DesktopHeader = () => {
                 </div>
                 <Navigation setFocus={setFocus} />
             </header>
-            <div
-                className={`overly ${focus ? "overly-visible" : ""}`}
-                onClick={() => setFocus(false)}></div>
         </>
     );
 };

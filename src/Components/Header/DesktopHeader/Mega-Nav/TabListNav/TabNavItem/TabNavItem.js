@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const TabItem = ({className , path , title }) => {
+const TabNavItem = ({className , path , title }) => {
     return (
         <li className={className}>
             <Link to={path}>
@@ -10,4 +10,4 @@ const TabItem = ({className , path , title }) => {
     );
 };
 
-export default TabItem;
+export default TabNavItem;

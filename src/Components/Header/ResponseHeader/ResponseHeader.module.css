@@ -1,0 +1,19 @@
+.header {
+    padding: 12px 16px 4px 16px;
+}
+.search_box{
+    width:51rem ;
+}
+.search_result {
+    opacity: 0;
+    visibility: collapse;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px -4px;
+}
+.search_result_focus {
+    opacity: 1;
+    visibility: visible;
+}

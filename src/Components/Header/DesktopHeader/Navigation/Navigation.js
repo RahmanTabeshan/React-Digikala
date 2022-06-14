@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import {useMediaQuery} from "react-responsive" ;
 import MegaNav from "../Mega-Nav/MeagaNav";
 
-const Navigation = ({setFocus}) => {
+const Navigation = () => {
 
     const isShow = useMediaQuery({minWidth:1074 }) ;
 
@@ -68,7 +68,7 @@ const Navigation = ({setFocus}) => {
             <div className="fixed">
                 <div className="nav">
                     <ul ref={navList}>
-                        <li className="category" ref={category} onMouseEnter={()=>setFocus(false)}>
+                        <li className="category" ref={category} >
                             <div className="title">
                                 <div>
                                     <FaBars />

@@ -3,3 +3,19 @@
     top : 0 ;
     margin-bottom: 40px;
 }
+.search_box{
+    width:600px ;
+}
+.search_result {
+    opacity: 0;
+    visibility: collapse;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px -4px;
+}
+.search_result_focus {
+    opacity: 1;
+    visibility: visible;
+}

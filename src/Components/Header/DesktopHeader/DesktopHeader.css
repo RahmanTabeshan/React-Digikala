@@ -28,14 +28,12 @@ header .top-header {
 }
 .search-box {
     position: relative;
-    width: 600px;
+    /* width: 600px; */
     height: 44px;
     padding: 0 16px;
     background-color: #f0f0f1;
     border-radius: 8px;
-    transition: background-color 0.3s linear;
-    -webkit-transition: background-color 0.3s linear;
-    -moz-transition: background-color 0.3s linear;
+    z-index: 1 ;
 }
 .search-box::before {
     content: "\e089";
@@ -56,6 +54,7 @@ header .top-header {
 .search {
     position: relative;
     font-family: "IranYekan_Fa";
+    font-size: 14px ;
     font-weight: normal;
     padding: 0 33px 0 0;
     background-color: #f0f0f1;
@@ -73,24 +72,13 @@ header .top-header {
     border-bottom: 1px solid #335fcf !important;
 }
 .search-result {
-    opacity: 0;
-    visibility: collapse;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px -4px;
     padding: 44px 16px 10px 16px;
     z-index: 1;
     transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
-}
-.search-result-focus {
-    opacity: 1;
-    visibility: visible;
 }
 .result-text {
     display: flex;
@@ -197,7 +185,7 @@ div.overly {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 5;
+    z-index: 1;
     background-color: #000;
     opacity: 0;
     visibility: collapse;

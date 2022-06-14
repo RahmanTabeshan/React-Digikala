@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("./Font/IranYekan_EnNum/Css/IranYekan_En.css");
 @import url("./Font/IranYekan_FaNum/Css/IranYekan_Fa.css");
 @import url("./Font/Digikala/Css/digikala.css");
@@ -32,10 +35,10 @@ input:focus {
     /* border: none; */
 }
 body {
-    position: relative ;
-    display: flex ;
-    align-items: center ;
-    justify-content: center ;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "IranYekan_Fa";
     font-weight: 500;
     font-size: 16px;
@@ -46,12 +49,17 @@ body {
     padding: 0;
 }
 #container {
-    display: flex ;
-    flex-direction: column ;
-    align-items: center ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     direction: rtl;
-    width: 100% ;
+    width: 100%;
 }
 main {
-    height: 2000px ;
+    height: 2000px;
+}
+@layer components{
+    .header-child{
+        @apply w-full flex items-center justify-between border-b border-b-slate-200 
+    }
 }

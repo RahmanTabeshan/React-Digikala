@@ -5,8 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+        backgroundSize:{
+            "96px" : "96px"
+        },
         backgroundImage:{
-            "logo" : "url('/src/Image/logo.svg')"
+            "logo" : "url('/src/Image/logo.svg')" ,
+            "digi" : "url('/src/Image/digi.svg')" ,
         },
         screens : {
             mobile : "500px"

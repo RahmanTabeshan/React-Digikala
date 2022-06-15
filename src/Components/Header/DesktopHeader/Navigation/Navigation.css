@@ -12,7 +12,7 @@ nav.navigation {
 .translate {
     transform: translateY(-40px);
 }
-.fixed {
+.nav-fixed {
     position: relative ;
     display: flex;
     justify-content: space-between;

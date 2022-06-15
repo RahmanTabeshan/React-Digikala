@@ -5,6 +5,7 @@ import { useEffect , useRef , useState} from "react";
 import { Link } from "react-router-dom";
 import {useMediaQuery} from "react-responsive" ;
 import MegaNav from "../Mega-Nav/MeagaNav";
+import Nav from "./Nav/Nav";
 
 const Navigation = () => {
 
@@ -65,7 +66,7 @@ const Navigation = () => {
 
     return (
         <nav className={`navigation ${scroll ? "translate" : ""}`} ref={nav}>
-            <div className="fixed">
+            <div className="nav-fixed">
                 <div className="nav">
                     <ul ref={navList}>
                         <li className="category" ref={category} >
@@ -77,48 +78,7 @@ const Navigation = () => {
                             </div>
                             <MegaNav megaNav={megaNav} />
                         </li>
-                        <li>
-                            <Link to="/">
-                                <div>
-                                    <i className="fa-regular fa-basket-shopping"></i>
-                                </div>
-                                <p>سوپر مارکت</p>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/">
-                                <div>
-                                    <i className="fa-regular fa-fire-flame-curved"></i>
-                                </div>
-                                <p>پرفروش ترین ها</p>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/">
-                                <div>
-                                    <i className="fa-regular fa-percent"></i>
-                                </div>
-                                <p>تخفیف ها و پیشنهادها</p>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/">
-                                <div>
-                                    <i className="fa-regular fa-badge-percent"></i>
-                                </div>
-                                <p>شگفت انگیزها</p>
-                            </Link>
-                        </li>
-                        <li className={isShow ? "" : "d-none"}>
-                            <Link to="/">
-                                سوالی دارید؟
-                            </Link>
-                        </li> 
-                        <li>
-                            <Link to="/">
-                                فروشنده شوید!
-                            </Link>
-                        </li>
+                        <Nav isShow={isShow} />
                         <li className="hover-bottom" ref={bottomListHover}></li>
                         <li className="hover-top" ref={topListHover}></li>
                     </ul>

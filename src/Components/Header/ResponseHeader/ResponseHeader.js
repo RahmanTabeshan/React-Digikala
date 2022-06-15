@@ -7,7 +7,8 @@ import { TbLogin } from "react-icons/tb";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { GrLocation } from "react-icons/gr";
 import { IoIosArrowBack } from "react-icons/io";
-
+import { useState } from "react";
+import ResponseNav from "./RespaonseNav/ResponseNav";
 
 const styles = {
     searchBox: Styles.search_box,
@@ -16,11 +17,14 @@ const styles = {
 };
 
 const ResponseHeader = () => {
+    const [navModal, setNavModal] = useState(false);
+    console.log(navModal);
+
     return (
         <header className={`header ${Styles.header}`}>
             <div className='header-child pb-3'>
-                <div className='text-xl'>
-                    <FaBars className='cursor-pointer' />
+                <div className='text-xl' onClick={() => setNavModal(true)}>
+                    <FaBars className='cursor-pointer transition-all duration-200 hover:text-stone-500' />
                 </div>
                 <div className='w-[92px] h-[24px]'>
                     <Link
@@ -28,36 +32,49 @@ const ResponseHeader = () => {
                         to='/'></Link>
                 </div>
                 <div className='text-xl'>
-                    <BsQuestionSquare className='cursor-pointer' />
+                    <BsQuestionSquare className='cursor-pointer transition-all duration-200 hover:text-stone-500' />
                 </div>
             </div>
             <div className='header-child py-2'>
                 <Search styles={styles} />
                 <Link
                     to='/users/login'
-                    className='flex items-center text-[14px] mx-[1%]'>
+                    className='flex items-center text-[14px] mx-[1%] transition-all duration-200 hover:text-stone-500'>
                     <TbLogin className='text-2xl ml-2' />
                     ورود
                 </Link>
                 <div className='w-max'>
                     <Link to='/checkout/cart/'>
-                        <RiShoppingCartLine className='cart-icon' />
+                        <RiShoppingCartLine className='cart-icon transition-all duration-200 hover:text-stone-500' />
                     </Link>
                 </div>
             </div>
             <div className='header-child'>
                 <div className='location w-full'>
-                    <Link to='/' className="w-full flex justify-between py-3">
-                        <div className="flex">
+                    <Link to='/' className='w-full flex justify-between py-3'>
+                        <div className='flex'>
                             <div className='icon pl-4'>
                                 <GrLocation />
                             </div>
-                            <span className="text-sm">لطفا شهر خود را انتخاب کنید</span>
+                            <span className='text-sm'>
+                                لطفا شهر خود را انتخاب کنید
+                            </span>
                         </div>
-                        <IoIosArrowBack className="text-base" />
-                    </Link> 
+                        <IoIosArrowBack className='text-base' />
+                    </Link>
                 </div>
             </div>
+            <div className={` modal-nav ${navModal ? "right-0" : "right-[-300px]" }`}>
+                <div className="w-full flex justify-center">
+                    <Link to="/" className="digi-logo">
+                    </Link>
+                </div>
+                <ResponseNav />
+            </div>
+            <div className={`back-drop ${
+                    navModal ? "opacity-10 visible" : "invisible opacity-0"
+                }`}
+                onClick={() => setNavModal(false)}></div>
         </header>
     );
 };

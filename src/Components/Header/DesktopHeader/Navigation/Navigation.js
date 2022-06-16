@@ -5,11 +5,11 @@ import { useEffect , useRef , useState} from "react";
 import { Link } from "react-router-dom";
 import {useMediaQuery} from "react-responsive" ;
 import MegaNav from "../Mega-Nav/MeagaNav";
-import Nav from "./Nav/Nav";
+import Nav from "../../Common/Nav/Nav";
 
 const Navigation = () => {
 
-    const isShow = useMediaQuery({minWidth:1074 }) ;
+    const isShow = useMediaQuery({minWidth:1110}) ;
 
     const [scroll , setScroll] = useState(false) ;
     const [megaNav , setMegaNav] = useState(false) ;

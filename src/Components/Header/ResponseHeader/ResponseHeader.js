@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import Styles from "./ResponseHeader.module.css";
 import { FaBars } from "react-icons/fa";
 import { BsQuestionSquare } from "react-icons/bs";
+import { BsShop } from "react-icons/bs";
 import Search from "../Common/Search/Search";
 import { TbLogin } from "react-icons/tb";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { GrLocation } from "react-icons/gr";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
-import ResponseNav from "./RespaonseNav/ResponseNav";
+import Nav from "../Common/Nav/Nav";
 
 const styles = {
     searchBox: Styles.search_box,
@@ -18,7 +19,6 @@ const styles = {
 
 const ResponseHeader = () => {
     const [navModal, setNavModal] = useState(false);
-    console.log(navModal);
 
     return (
         <header className={`header ${Styles.header}`}>
@@ -69,7 +69,11 @@ const ResponseHeader = () => {
                     <Link to="/" className="digi-logo">
                     </Link>
                 </div>
-                <ResponseNav />
+                <div className="flex justify-center">
+                    <ul className={` w-[90%] pb-2 border-b  ${Styles.ul}`}>
+                        <Nav quIcon={<BsQuestionSquare/>} shop={<BsShop/>}  />
+                    </ul>
+                </div>
             </div>
             <div className={`back-drop ${
                     navModal ? "opacity-10 visible" : "invisible opacity-0"

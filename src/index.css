@@ -71,4 +71,10 @@ main {
     .digi-logo{
         @apply w-[90%] h-[24px] bg-digi bg-no-repeat bg-96px bg-center border-b border-slate-200 py-8
     }
+    .nav-item{
+        @apply flex justify-center
+    }
+    .nav-link{
+        @apply flex items-center py-3 text-slate-400 text-[13px]
+    }
 }

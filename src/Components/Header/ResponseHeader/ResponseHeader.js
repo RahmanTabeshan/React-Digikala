@@ -22,60 +22,63 @@ const ResponseHeader = () => {
 
     return (
         <header className={`header ${Styles.header}`}>
-            <div className='header-child pb-3'>
-                <div className='text-xl' onClick={() => setNavModal(true)}>
-                    <FaBars className='cursor-pointer transition-all duration-200 hover:text-stone-500' />
+            <div className="header-child pb-3">
+                <div className="text-xl" onClick={() => setNavModal(true)}>
+                    <FaBars className="cursor-pointer transition-all duration-200 hover:text-stone-500" />
                 </div>
-                <div className='w-[92px] h-[24px]'>
+                <div className="w-[92px] h-[24px]">
                     <Link
-                        className='block bg-logo bg-no-repeat bg-cover h-full w-full'
-                        to='/'></Link>
+                        className="block bg-logo bg-no-repeat bg-cover h-full w-full"
+                        to="/"></Link>
                 </div>
-                <div className='text-xl'>
-                    <BsQuestionSquare className='cursor-pointer transition-all duration-200 hover:text-stone-500' />
+                <div className="text-xl">
+                    <BsQuestionSquare className="cursor-pointer transition-all duration-200 hover:text-stone-500" />
                 </div>
             </div>
-            <div className='header-child py-2'>
+            <div className="header-child py-2">
                 <Search styles={styles} />
                 <Link
-                    to='/users/login'
-                    className='flex items-center text-[14px] mx-[1%] transition-all duration-200 hover:text-stone-500'>
-                    <TbLogin className='text-2xl ml-2' />
+                    to="/users/login"
+                    className="flex items-center text-[14px] mx-[1%] transition-all duration-200 hover:text-stone-500">
+                    <TbLogin className="text-2xl ml-2" />
                     ورود
                 </Link>
-                <div className='w-max'>
-                    <Link to='/checkout/cart/'>
-                        <RiShoppingCartLine className='cart-icon transition-all duration-200 hover:text-stone-500' />
+                <div className="w-max">
+                    <Link to="/checkout/cart/">
+                        <RiShoppingCartLine className="cart-icon transition-all duration-200 hover:text-stone-500" />
                     </Link>
                 </div>
             </div>
-            <div className='header-child'>
-                <div className='location w-full'>
-                    <Link to='/' className='w-full flex justify-between py-3'>
-                        <div className='flex'>
-                            <div className='icon pl-4'>
+            <div className="header-child">
+                <div className="location w-full">
+                    <Link to="/" className="w-full flex justify-between py-3">
+                        <div className="flex">
+                            <div className="icon pl-4">
                                 <GrLocation />
                             </div>
-                            <span className='text-sm'>
+                            <span className="text-sm">
                                 لطفا شهر خود را انتخاب کنید
                             </span>
                         </div>
-                        <IoIosArrowBack className='text-base' />
+                        <IoIosArrowBack className="text-base" />
                     </Link>
                 </div>
             </div>
-            <div className={` modal-nav ${navModal ? "right-0" : "right-[-300px]" }`}>
+            <div
+                className={` modal-nav ${
+                    navModal ? "right-0" : "right-[-300px]"
+                }`}>
                 <div className="w-full flex justify-center">
-                    <Link to="/" className="digi-logo">
-                    </Link>
+                    <Link to="/" className="digi-logo"></Link>
                 </div>
                 <div className="flex justify-center">
                     <ul className={` w-[90%] pb-2 border-b  ${Styles.ul}`}>
-                        <Nav quIcon={<BsQuestionSquare/>} shop={<BsShop/>}  />
+                        <Nav quIcon={<BsQuestionSquare />} shop={<BsShop />} />
                     </ul>
                 </div>
             </div>
-            <div className={`back-drop ${
+            <div
+                className={`back-drop ${
                     navModal ? "opacity-10 visible" : "invisible opacity-0"
                 }`}
                 onClick={() => setNavModal(false)}></div>

@@ -15,7 +15,7 @@ const Navigation = () => {
     const [megaNav , setMegaNav] = useState(false) ;
     
 
-    const nav = useRef()
+    const nav = useRef() ;
     const navList = useRef() ;
     const bottomListHover = useRef()
     const topListHover = useRef()

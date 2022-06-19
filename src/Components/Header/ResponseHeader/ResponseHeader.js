@@ -16,7 +16,6 @@ const styles = {
     searchResult: Styles.search_result,
     searchResultFocus: Styles.search_result_focus,
 };
-
 const ResponseHeader = () => {
     const [navModal, setNavModal] = useState(false);
 
@@ -75,6 +74,9 @@ const ResponseHeader = () => {
                     <ul className={` w-[90%] pb-2 border-b  ${Styles.ul}`}>
                         <Nav quIcon={<BsQuestionSquare />} shop={<BsShop />} />
                     </ul>
+                </div>
+                <div>
+                    
                 </div>
             </div>
             <div

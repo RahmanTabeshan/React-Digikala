@@ -7,7 +7,7 @@ import { HashRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("container"));
 
 root.render(
-    <HashRouter>
+    <HashRouter basename="https://react-digikala.netlify.app">
         <App />
     </HashRouter>
 );

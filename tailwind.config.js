@@ -14,6 +14,9 @@ module.exports = {
         },
         screens : {
             mobile : "500px"
+        },
+        width : {
+            "90%" : "90%"
         }
     },
   },

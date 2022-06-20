@@ -10,6 +10,7 @@ import { GrLocation } from "react-icons/gr";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
 import Nav from "../Common/Nav/Nav";
+import Category from "./Category/Category";
 
 const styles = {
     searchBox: Styles.search_box,
@@ -71,17 +72,17 @@ const ResponseHeader = () => {
                     <Link to="/" className="digi-logo"></Link>
                 </div>
                 <div className="flex justify-center">
-                    <ul className={` w-[90%] pb-2 border-b  ${Styles.ul}`}>
+                    <ul className={`w-90% pb-2 border-b  ${Styles.ul}`}>
                         <Nav quIcon={<BsQuestionSquare />} shop={<BsShop />} />
                     </ul>
                 </div>
-                <div>
-                    
+                <div className="flex flex-col items-center pb-4">
+                    <Category />
                 </div>
             </div>
             <div
                 className={`back-drop ${
-                    navModal ? "opacity-10 visible" : "invisible opacity-0"
+                    navModal ? "opacity-20 visible" : "invisible opacity-0"
                 }`}
                 onClick={() => setNavModal(false)}></div>
         </header>

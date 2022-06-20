@@ -7,7 +7,7 @@ const UserOperation = () => {
             <div className='icon'>
                 <TbLogin className='login-icon' />
             </div>
-            <Link to='https://react-digikala.netlify.app/users/login/'>ورود</Link>
+            <Link to='#/users/login/'>ورود</Link>
             <span></span>
             <Link to='/users/sign-up/'>ثبت نام</Link>
         </div>

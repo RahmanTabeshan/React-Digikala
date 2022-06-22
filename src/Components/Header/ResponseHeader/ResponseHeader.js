@@ -76,7 +76,7 @@ const ResponseHeader = () => {
                         <Nav quIcon={<BsQuestionSquare />} shop={<BsShop />} />
                     </ul>
                 </div>
-                <div className="flex flex-col items-center pb-4">
+                <div className="flex flex-col h-[580px] items-center pb-4">
                     <Category />
                 </div>
             </div>

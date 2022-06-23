@@ -1,11 +1,11 @@
 
 const digitalList = [
-    {id:1 , title:"گوشی همراه" , path:"/" , className:"category-link" , dataId : 1},
+    {id:1 , title:"گوشی همراه" , path:"/ل" , className:"category-link" , dataId : 1},
     {id:2 , title:"سامسونگ" , path:"/" , className:"sub-category-link" , dataParentId : 1},
     {id:3 , title:"هواوی" , path:"/" , className:"sub-category-link" , dataParentId : 1},
     {id:4 , title:"اپل" , path:"/" , className:"sub-category-link" , dataParentId : 1 },
     {id:5 , title:"شیائومی" , path:"/" , className:"sub-category-link" , dataParentId : 1},
-    {id:6 , title:"لوازم جانبی گوشی" , path:"/" , className:"category-link" , dataId : 2},
+    {id:6 , title:"لوازم جانبی گوشی" , path:"/لل" , className:"category-link" , dataId : 2},
     {id:7 , title:"کیف" , path:"/" , className:"sub-category-link", dataParentId : 2},
     {id:8 , title:"کاور" , path:"/" , className:"sub-category-link", dataParentId : 2},
     {id:9 , title:"قاب" , path:"/" , className:"sub-category-link", dataParentId : 2},

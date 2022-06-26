@@ -4,7 +4,7 @@ import "./Home.css" ;
 import "swiper/css" ;
 import "swiper/css/navigation" ;
 // import "swiper/css/pagination" ;
-import slide1 from "../../Image/slider/slide1.jpg" ;
+import slide1 from "../../Image/slider/slide1.png" ;
 import slide2 from "../../Image/slider/slide2.jpg" ;
 
 const Home = () => {
@@ -30,7 +30,7 @@ const Home = () => {
 
     return (
         <main className="max-w-[1366px] w-full h-[2000px]">
-            <section className="max-h-[300px]">
+            <section className="max-w-[2000px]">
                 <Swiper
                     loop={true}
                     autoplay={autoplay}

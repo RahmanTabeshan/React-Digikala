@@ -1,15 +1,14 @@
-import { useEffect } from "react";
+
+import Home from "../Components/Home/Home";
 import Layout from "../Components/Layout/Layout";
 
 const HomePage = () => {
 
-    useEffect(()=>{
-        document.title = "فروشگاه اینترنتی دیجیکالا"
-    },[])
+    document.title = "فروشگاه اینترنتی دیجیکالا" ;
     
     return (
         <Layout>
-            <main>This is Home Page</main>
+            <Home />
         </Layout>
     );
 };

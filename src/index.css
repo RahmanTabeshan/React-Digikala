@@ -55,9 +55,6 @@ body {
     direction: rtl;
     width: 100%;
 }
-main {
-    height: 2000px;
-}
 @layer components {
     .header-child {
         @apply w-full flex items-center justify-between border-b border-b-slate-200;

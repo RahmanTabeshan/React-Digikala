@@ -54,7 +54,7 @@ const Home = () => {
                     {slider.map((item) => (
                         <SwiperSlide className={Styles.slide} key={item.id}>
                             <img
-                                className="w-full h-[200px] md:h-[250px] lg:h-[300px] xl:h-[400px]"
+                                className="w-full h-[140px] mobile:h-[170px] md:h-[250px!important] lg:h-[300px!important] xl:h-[400px!important]"
                                 src={item.src}
                                 alt={item.title}
                             />

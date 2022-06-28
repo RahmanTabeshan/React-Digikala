@@ -17,7 +17,7 @@ module.exports = {
         },
         width : {
             "90%" : "90%"
-        }
+        },
     },
   },
   plugins: [],

@@ -1,25 +1,18 @@
 .swiper-pagination-bullet {
     display : flex ;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50% ;
     text-align: center;
-    line-height: 20px;
-    font-size: 12px;
-    color: #000;
     opacity: 1;
     background: rgba(0, 0, 0, 0.2);
-    transform : scaleX(1) ;
-    transition : all .2s linear ;
-    margin-right: 16px ;
+    margin-right: 10px ;
     cursor: pointer ;
+    transition : all .2s linear ;
   }
 
   .swiper-pagination-bullet-active {
-    color: #fff;
-    background: #007aff;
-    width: 40px ;
+    background: #fff;
+    width: 20px ;
     border-radius: 20px ;
-    /* transform: scaleX(2); */
-    /* margin : 0 32px ; */
   }

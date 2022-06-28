@@ -1,10 +1,11 @@
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper , SwiperSlide } from "swiper/react";
+import Styles from "./Home.module.css" ;
 import "./Home.css" ;
 import "swiper/css" ;
 import "swiper/css/navigation" ;
 // import "swiper/css/pagination" ;
-import slide1 from "../../Image/slider/slide1.png" ;
+import slide1 from "../../Image/slider/slide1.jpg" ;
 import slide2 from "../../Image/slider/slide2.jpg" ;
 
 const Home = () => {
@@ -30,17 +31,17 @@ const Home = () => {
 
     return (
         <main className="max-w-[1366px] w-full h-[2000px]">
-            <section className="max-w-[2000px]">
+            <section className="h-[250px] lg:h-[300px] xl:h-[400px]">
                 <Swiper
                     loop={true}
                     autoplay={autoplay}
                     navigation={navigation} 
                     pagination={pagination} 
                     modules={[Navigation , Pagination,Autoplay]} 
-                    className="relative"
+                    className="relative h-full"
                 >
                     {slider.map(item => (
-                        <SwiperSlide key={item.id}>
+                        <SwiperSlide className={Styles.slide} key={item.id}>
                             <img className="max-w-full h-full" src={item.src} alt={item.title} />
                         </SwiperSlide>
                     ))}

@@ -49,7 +49,7 @@ const ResponseHeader = () => {
                     </Link>
                 </div>
             </div>
-            <div className="header-child">
+            <div className="header-child border-none">
                 <div className="location w-full">
                     <Link to="/" className="w-full flex justify-between py-3">
                         <div className="flex">

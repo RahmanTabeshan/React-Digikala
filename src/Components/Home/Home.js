@@ -42,7 +42,7 @@ const Home = () => {
                 >
                     {slider.map(item => (
                         <SwiperSlide className={Styles.slide} key={item.id}>
-                            <img className="max-w-full h-full" src={item.src} alt={item.title} />
+                            <img className="relative overflow-hidden object-cover inline-block w-full h-full" src={item.src} alt={item.title} />
                         </SwiperSlide>
                     ))}
                     <div className="pag flex absolute"></div>

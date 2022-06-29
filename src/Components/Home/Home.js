@@ -13,6 +13,7 @@ import slide5 from "../../Image/slider/slide5.jpg";
 import slide6 from "../../Image/slider/slide6.jpg";
 import slide7 from "../../Image/slider/slide7.jpg";
 import slide8 from "../../Image/slider/slide8.jpg";
+import { Suspense } from "react";
 
 const Home = () => {
     const pagination = {
@@ -42,7 +43,8 @@ const Home = () => {
 
     return (
         <main className="max-w-[1366px] w-full h-[2000px]">
-            <section className="">
+            <section>
+            <Suspense fallback={<div>loading...</div>}>
                 <Swiper
                     loop={true}
                     autoplay={autoplay}
@@ -52,16 +54,17 @@ const Home = () => {
                     className="relative h-full"
                 >
                     {slider.map((item) => (
-                        <SwiperSlide className={Styles.slide} key={item.id}>
-                            <img
-                                className="w-full h-[140px] mobile:h-[170px] md:h-[250px!important] lg:h-[300px!important] xl:h-[400px!important]"
-                                src={item.src}
-                                alt={item.title}
-                            />
-                        </SwiperSlide>
+                            <SwiperSlide className={Styles.slide} key={item.id}>
+                                <img
+                                    className="w-full h-[140px] mobile:h-[170px] md:h-[250px!important] lg:h-[300px!important] xl:h-[400px!important]"
+                                    src={item.src}
+                                    alt={item.title}
+                                />
+                            </SwiperSlide>
                     ))}
                     <div className="pag flex absolute bottom-3 right-4 md:right-20 z-10"></div>
                 </Swiper>
+            </Suspense>
             </section>
         </main>
     );

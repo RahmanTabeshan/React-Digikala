@@ -22,15 +22,15 @@ const Service = () => {
     ])
 
     return (
-        <section className="flex flex-wrap gap-10 justify-around w-full mt-4 px-8 py-2">
+        <section className="flex flex-wrap gap-y-4 lg:gap-9 justify-around w-full mt-4 px-4 lg:px-8 py-2">
             {Service.map( item =>(
                 <Item key={item.id} title={item.title} path={item.path} img={item.img} />
             ))}
-            <div className="flex flex-col items-center cursor-pointer">
+            <div className="flex flex-col items-center w-1/4 lg:w-max cursor-pointer">
                 <div className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-gray-200">
                     <BsThreeDots className="text-[26px]" />
                 </div>
-                <span className="text-sm">بیشتر</span>
+                <span className="text-sm pt-2">بیشتر</span>
             </div>
         </section>
     );

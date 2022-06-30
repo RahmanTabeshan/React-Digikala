@@ -1,5 +1,7 @@
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Styles from "./Slider.module.css";
+import "./Slider.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import slide1 from "../../../Image/slider/slide1.jpg";
@@ -14,7 +16,7 @@ import {IoIosArrowBack} from "react-icons/io";
 import {IoIosArrowForward} from "react-icons/io";
 import { useState } from "react";
 
-const Slider = ({Styles}) => {
+const Slider = () => {
 
     const pagination = {
         el: ".pag",
@@ -61,7 +63,7 @@ const Slider = ({Styles}) => {
                         />
                     </SwiperSlide>
                 ))}
-                <div className="pag flex absolute bottom-3 right-4 md:right-20 z-10"></div>
+                <div className="pag w-max flex absolute bottom-4 left-4 md:right-[2%] z-10"></div>
                 <div className={`next slider-btn ${
                     hover ? "opacity-100 left-[1%]" : "opacity-0 left-[-1%]"
                 }`}>

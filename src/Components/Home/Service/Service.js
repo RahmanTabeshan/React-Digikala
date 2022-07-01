@@ -22,11 +22,15 @@ const Service = () => {
     ])
 
     const hello = ()=>{
-        setService(Service) ;
-    }
+        const newService = [...Service] ;
+        console.log(setService(newService)) ;
+    } /// for pervent error in netlify 
 
     return (
-        <section onAbort={hello()} className="flex flex-wrap gap-y-4 justify-around w-full mt-4 px-4 lg:px-8 py-2">
+        <section 
+            onClick={()=>hello()} 
+            className="flex flex-wrap gap-y-4 justify-around w-full mt-4 px-4 lg:px-8 py-2"
+        >
             {Service.map( item =>(
                 <Item key={item.id} title={item.title} path={item.path} img={item.img} />
             ))}

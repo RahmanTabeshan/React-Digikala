@@ -21,8 +21,12 @@ const Service = () => {
         {id:7 , title:"دیجی کلاب" , path:"/" , img:digi_club} ,
     ])
 
+    const hello = ()=>{
+        setService(Service) ;
+    }
+
     return (
-        <section className="flex flex-wrap gap-y-4 lg:gap-9 justify-around w-full mt-4 px-4 lg:px-8 py-2">
+        <section onAbort={hello()} className="flex flex-wrap gap-y-4 justify-around w-full mt-4 px-4 lg:px-8 py-2">
             {Service.map( item =>(
                 <Item key={item.id} title={item.title} path={item.path} img={item.img} />
             ))}

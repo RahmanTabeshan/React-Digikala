@@ -46,7 +46,7 @@ const Slider = () => {
     const [hover,setHover] = useState(false) ;
 
     return (
-        <section onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)}  >
+        <section className="w-full" onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)}  >
             <Swiper
                 loop={true}
                 autoplay={autoplay}

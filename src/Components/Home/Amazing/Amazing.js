@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import Styles from "./Amazing.module.css" ;
+import "./Amazing.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import AmazingTypo from "../../../Image/Amazing/amazing-typo.svg";
@@ -21,7 +22,6 @@ import product10 from "../../../Image/Amazing/Product/محصول دهم.jpg" ;
 import product11 from "../../../Image/Amazing/Product/محصول یازدهم.jpg" ;
 import product12 from "../../../Image/Amazing/Product/محصول دوازدهم.jpg" ;
 import Item from "./item/item";
-import { useMediaQuery } from "react-responsive";
 
 const Amazing = () => {
 
@@ -46,24 +46,17 @@ const Amazing = () => {
         console.log(setTopAmazing(newAmazing)) ;
     }
 
-    const xxl = useMediaQuery({minWidth:1280}) ;
-    const xl = useMediaQuery({minWidth:1100}) ;
-    // const lg = useMediaQuery({minWidth:1024}) ;
-    const md = useMediaQuery({minWidth:960}) ;
-    const sm = useMediaQuery({minWidth:768}) ;
-    const xs = useMediaQuery({minWidth:550}) ;
-
     return (
         <section className="w-98% lg:w-95% bg-red-600 rounded-lg py-4 px-2 mt-6" onClick={()=>handleClick()}>
             <Swiper
-                slidesPerView={ xxl ? 7 : xl ? 6 : md ? 5 : sm ? 4 : xs ? 3 : 2 }
+                slidesPerView={"auto"}
                 navigation={true}
                 spaceBetween={2}
                 modules={[Navigation]}
                 className=""
             >
-                <SwiperSlide className={Styles.SwiperSlide}>
-                    <div className="w-full flex flex-col items-center p-4">
+                <SwiperSlide style={{width:"auto"}} className={Styles.SwiperSlide}>
+                    <div className="w-[179px] flex flex-col items-center p-4">
                         <div className="w-[92px] h-[77px]">
                             <img src={AmazingTypo} alt="Amazing" className="w-full h-full" />
                         </div>
@@ -77,14 +70,15 @@ const Amazing = () => {
                     </div>
                 </SwiperSlide>
                 {TopAmazing.map(item=>(
-                    <SwiperSlide key={item.id} className={`${Styles.Amazing} ${Styles.SwiperSlide} Amazing bg-white`} >
+                    <SwiperSlide style={{width:"auto"}} key={item.id} className={`${Styles.Amazing} ${Styles.SwiperSlide} Amazing bg-white`} >
                         <Item item={item} />
                     </SwiperSlide>
                 ))}
                 <SwiperSlide 
+                style={{width:"auto"}}
                     className={`${Styles.SwiperSlide} bg-white !h-[262px] rounded-tl-lg rounded-bl-lg`}
                 >
-                    <div className="w-full h-full flex flex-col justify-center items-center">
+                    <div className="w-[179px] h-full flex flex-col justify-center items-center">
                         <Link to="/product/Amazing" className="p-3 border border-blue-400 rounded-full">
                             <IoMdArrowBack className="text-xl text-blue-600" />
                         </Link>

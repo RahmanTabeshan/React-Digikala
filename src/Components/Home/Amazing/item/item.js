@@ -15,8 +15,10 @@ const Item = ({item}) => {
                 <span className="percent" >
                     {item.percent}
                 </span>
-                <div>
+                <div className="relative">
                     <span>{money_format(item.price)}</span>
+                    <span className="relative -left-1 text-[11px]">توما</span>
+                    <div className="absolute text-[11px] -top-[6px] -left-1">ن</div>
                 </div>
             </div>
             <div className="w-full flex justify-end pl-4 pt-2 text-xs text-stone-500">

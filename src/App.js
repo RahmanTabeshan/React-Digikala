@@ -12,7 +12,9 @@ const App = () => {
 
     useEffect(() => {
         const onPageLoad = () => {
-          setLoading(false);
+          setTimeout( ()=>{
+            setLoading(false) ;
+          } ,500)
         };
     
         // Check if the page has already loaded

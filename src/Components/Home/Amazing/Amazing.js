@@ -1,14 +1,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import Styles from "./Amazing.module.css" ;
-import "./Amazing.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import AmazingTypo from "../../../Image/Amazing/amazing-typo.svg";
 import General from "../../../Image/Amazing/General.png";
 import { Link } from "react-router-dom";
-import {IoIosArrowBack, IoMdArrowBack} from "react-icons/io" ;
-import { useState } from "react";
+import {IoIosArrowBack, IoIosArrowForward, IoMdArrowBack} from "react-icons/io" ;
+import { useEffect, useState } from "react";
 import product1 from "../../../Image/Amazing/Product/محصول اول.jpg" ;
 import product2 from "../../../Image/Amazing/Product/محصول دوم.jpg";
 import product3 from "../../../Image/Amazing/Product/محصول سوم.jpg" ;
@@ -25,32 +24,40 @@ import Item from "./item/item";
 
 const Amazing = () => {
 
-    const [TopAmazing , setTopAmazing] = useState([
-        {id:1 , title:"محصول اول" , img:product1 , price:"3000000" , percent:"14%"},
-        {id:2 , title:"محصول دوم" , img:product2 , price:"498000" , percent:"8%"},
-        {id:3 , title:"محصول سوم" , img:product3 , price:"2598000" , percent:"15%"},
-        {id:4 , title:"محصول چهارم" , img:product4 , price:"6025300" , percent:"25%"},
-        {id:5 , title:"محصول پنجم" , img:product5 , price:"96510" , percent:"29%"},
-        {id:6 , title:"محصول ششم" , img:product6 , price:"458200" , percent:"30%"},
-        {id:7 , title:"محصول هفتم" , img:product7 , price:"5145836" , percent:"13%"},
-        {id:8 , title:"محصول هشتم" , img:product8 , price:"217000" , percent:"5%"},
-        {id:9 , title:"محصول نهم" , img:product9 , price:"365000" , percent:"12%"},
-        {id:10 , title:"محصول دهم" , img:product10 , price:"938000" , percent:"27%"},
-        {id:11 , title:"محصول یازدهم" , img:product11 , price:"97500" , percent:"17%"},
-        {id:12 , title:"محصول دوازدهم" , img:product12 , price:"389000" , percent:"6%"},
-    ])
+    const [hover , setHover] = useState(false) ;
+    const [TopAmazing , setTopAmazing] = useState([]) ;
 
-    // this function for prevent error in netlify 
-    const handleClick = ()=>{
-        const newAmazing = [...TopAmazing] ;
-        console.log(setTopAmazing(newAmazing)) ;
-    }
+    useEffect(()=>{
+        const Amazing = [
+            {id:1 , title:"محصول اول" , img:product1 , price:"3000000" , percent:"14%"},
+            {id:2 , title:"محصول دوم" , img:product2 , price:"498000" , percent:"8%"},
+            {id:3 , title:"محصول سوم" , img:product3 , price:"2598000" , percent:"15%"},
+            {id:4 , title:"محصول چهارم" , img:product4 , price:"6025300" , percent:"25%"},
+            {id:5 , title:"محصول پنجم" , img:product5 , price:"96510" , percent:"29%"},
+            {id:6 , title:"محصول ششم" , img:product6 , price:"458200" , percent:"30%"},
+            {id:7 , title:"محصول هفتم" , img:product7 , price:"5145836" , percent:"13%"},
+            {id:8 , title:"محصول هشتم" , img:product8 , price:"217000" , percent:"5%"},
+            {id:9 , title:"محصول نهم" , img:product9 , price:"365000" , percent:"12%"},
+            {id:10 , title:"محصول دهم" , img:product10 , price:"938000" , percent:"27%"},
+            {id:11 , title:"محصول یازدهم" , img:product11 , price:"97500" , percent:"17%"},
+            {id:12 , title:"محصول دوازدهم" , img:product12 , price:"389000" , percent:"6%"},
+        ]
+        setTopAmazing(Amazing) ;
+    },[]) ;
 
+    if(!TopAmazing.length) return <div>Loading...</div> 
     return (
-        <section className="w-98% lg:w-95% bg-red-600 rounded-lg py-4 px-2 mt-6" onClick={()=>handleClick()}>
+        <section 
+            className="w-98% lg:w-95% bg-red-600 rounded-lg py-4 px-2 mt-6"
+            onMouseEnter={()=>setHover(true)}
+            onMouseLeave={()=>setHover(false)}
+        >
             <Swiper
                 slidesPerView={"auto"}
-                navigation={true}
+                navigation={{
+                    nextEl : ".swiper-next" ,
+                    prevEl : ".swiper-prev"
+                }}
                 spaceBetween={2}
                 modules={[Navigation]}
                 className=""
@@ -79,12 +86,18 @@ const Amazing = () => {
                     className={`${Styles.SwiperSlide} bg-white !h-[262px] rounded-tl-lg rounded-bl-lg`}
                 >
                     <div className="w-[179px] h-full flex flex-col justify-center items-center">
-                        <Link to="/product/Amazing" className="p-3 border border-blue-400 rounded-full">
+                        <Link to="/product/Amazing/" className="p-3 border border-blue-400 rounded-full">
                             <IoMdArrowBack className="text-xl text-blue-600" />
                         </Link>
                         <span className="pt-4 text-sm text-444">مشاهده همه</span>
                     </div>
                 </SwiperSlide>
+                <div className={`swiper-prev slider-btn right-0 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
+                    <IoIosArrowForward className="ml-1" />
+                </div>
+                <div className={`swiper-next slider-btn left-1 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
+                    <IoIosArrowBack className="mr-1" />
+                </div>
             </Swiper>
         </section>
     );

@@ -11,6 +11,7 @@ module.exports = {
         backgroundImage:{
             "logo" : "url('/src/Image/logo.svg')" ,
             "digi" : "url('/src/Image/digi.svg')" ,
+            "fresh" : "url('/src/Image/Amazing-Fresh/bg.png')" ,
         },
         screens : {
             mobile : "500px"

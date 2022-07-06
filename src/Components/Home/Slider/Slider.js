@@ -53,6 +53,7 @@ const Slider = () => {
                 navigation={navigation}
                 pagination={pagination}
                 modules={[Navigation, Pagination, Autoplay]}
+                className="w-full"
             >
                 {slider.map((item) => (
                     <SwiperSlide className={Styles.slide} key={item.id}>

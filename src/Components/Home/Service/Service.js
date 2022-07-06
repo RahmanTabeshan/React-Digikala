@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsThreeDots } from "react-icons/bs" ;
 import digi_jet from "../../../Image/digi_jet.png" ;
 import digi_style from "../../../Image/digi_Style.png" ;
@@ -11,24 +11,24 @@ import Item from "./Item/Item";
 
 const Service = () => {
 
-    const [Service , setService] = useState([
-        {id:1 , title:"دیجیکالا جت" , path:"/" , img:digi_jet} ,
-        {id:2 , title:"دیجی استایل" , path:"/" , img:digi_style} ,
-        {id:3 , title:"دیجی پی" , path:"/" , img:digi_pay} ,
-        {id:4 , title:"دیجیکالا مهر" , path:"/" , img:digi_mehr} ,
-        {id:5 , title:"ماموریت ها" , path:"/" , img:mission} ,
-        {id:6 , title:"دیجی پلاس" , path:"/" , img:digi_plus} ,
-        {id:7 , title:"دیجی کلاب" , path:"/" , img:digi_club} ,
-    ])
+    const [Service , setService] = useState([])
 
-    const hello = ()=>{
-        const newService = [...Service] ;
-        console.log(setService(newService)) ;
-    } /// for pervent error in netlify 
+    useEffect(()=>{
+        const services = [
+            {id:1 , title:"دیجیکالا جت" , path:"/" , img:digi_jet} ,
+            {id:2 , title:"دیجی استایل" , path:"/" , img:digi_style} ,
+            {id:3 , title:"دیجی پی" , path:"/" , img:digi_pay} ,
+            {id:4 , title:"دیجیکالا مهر" , path:"/" , img:digi_mehr} ,
+            {id:5 , title:"ماموریت ها" , path:"/" , img:mission} ,
+            {id:6 , title:"دیجی پلاس" , path:"/" , img:digi_plus} ,
+            {id:7 , title:"دیجی کلاب" , path:"/" , img:digi_club} ,
+        ]
+        setService(services) ;
+    },[])
 
+    if(!Service.length) return <div>Loading...</div>
     return (
         <section 
-            onClick={()=>hello()} 
             className="flex flex-wrap gap-y-4 justify-around w-full mt-5 px-4 lg:px-8 py-2"
         >
             {Service.map( item =>(

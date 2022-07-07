@@ -45,18 +45,18 @@ const AmazingFresh = () => {
                 className="flex flex-col lg:flex-row lg:justify-between px-2 md:px-6 lg:px-8 xl:px-10 py-4 bg-gradient-to-l from-neutral-200 to-neutral-100 "
             >
                 <div className="absolute inset-0 bg-fresh bg-no-repeat z-0"></div>
-                <div className="relative flex justify-between lg:justify-around items-center z-10">
+                <div className="relative flex justify-between lg:justify-around items-center z-[5]">
                     <div className="w-[66px] h-[62px]">
                         <img src={Fresh} alt="Amazing-fresh" className="w-full" />
                     </div>
                     <div className="w-[250px] h-[28px] mx-1 mobile:mx-5">
                         <img src={FreshTypo} alt="Fresh Typo" className="w-full" />
                     </div>
-                    <div className={`${xss ? "block" : "hidden"} w-max px-2 py-1 rounded-xl bg-green-600 text-sm text-white`} >
+                    <div className={`${xss ? "block" : "hidden"} w-max px-2 py-1 rounded-xl bg-green-600 text-xs text-white`} >
                         تا %29 تخفیف
                     </div>
                 </div>
-                <div className="flex items-center justify-center z-10" >
+                <div className="flex items-center justify-center z-[5]" >
                     <div className="flex">
                         {freshList.length ? (
                             freshList.slice(0,end).map(item => (

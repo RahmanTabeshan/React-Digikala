@@ -1,6 +1,7 @@
 
 import Amazing from "./Amazing/Amazing";
 import AmazingFresh from "./AmazingFresh/AmazingFresh";
+import Category from "./Category/Category";
 import "./Home.css";
 import Partner from "./Partner/Partner";
 import Service from "./Service/Service";
@@ -14,6 +15,7 @@ const Home = () => {
             <Amazing />
             <AmazingFresh />
             <Partner />
+            <Category />
         </main>
     );
 };

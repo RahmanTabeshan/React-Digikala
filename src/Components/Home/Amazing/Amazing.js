@@ -60,7 +60,6 @@ const Amazing = () => {
                 }}
                 spaceBetween={2}
                 modules={[Navigation]}
-                className=""
             >
                 <SwiperSlide style={{width:"auto"}} className={Styles.SwiperSlide}>
                     <div className="w-[179px] flex flex-col items-center p-4">
@@ -92,7 +91,7 @@ const Amazing = () => {
                         <span className="pt-4 text-sm text-444">مشاهده همه</span>
                     </div>
                 </SwiperSlide>
-                <div className={`swiper-prev slider-btn right-0 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
+                <div className={`swiper-prev slider-btn swiper-button-disabled right-1 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
                     <IoIosArrowForward className="ml-1" />
                 </div>
                 <div className={`swiper-next slider-btn left-1 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >

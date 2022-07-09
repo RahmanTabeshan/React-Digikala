@@ -35,16 +35,10 @@ const Navigation = () => {
                     topHover.style.width = itemWidth+"px" ;
                     topHover.style.transform = "scalex(1)" ;
                     topHover.style.left = itemLeft+"px" ;
-                    if(e.target.classList.contains("category")){
-                        setMegaNav(true)
-                    }
                 })
                 li.addEventListener("mouseleave" , (e)=>{
                     bottomHover.style.transform = "scalex(0)" ;
                     topHover.style.transform = "scalex(0)" ;
-                    if(e.target.classList.contains("category")){
-                        setMegaNav(false)
-                    }
                 })
         })
         let scroll = [] ;
@@ -69,7 +63,12 @@ const Navigation = () => {
             <div className="nav-fixed">
                 <div className="nav">
                     <ul ref={navList}>
-                        <li className="category" ref={category} >
+                        <li 
+                            className="category" 
+                            ref={category} 
+                            onMouseEnter={()=>setMegaNav(true)}
+                            onMouseLeave={()=>setMegaNav(false)}
+                        >
                             <div className="title">
                                 <div>
                                     <FaBars />

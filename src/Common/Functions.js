@@ -10,3 +10,21 @@ export function orginal_format(num) {
     num = num.replaceAll(",", "");
     return num;
 }
+
+export function sortArray(Array,numSort=2){
+    const array = [] ;
+    Array.forEach((item,index) => {
+        if(index === 0 ){
+            array[0] = [item]
+        }else if( index % numSort === 0 ){
+            array.push([item]) ;
+        }else{
+            array.forEach(p =>{
+                if(p.length < numSort ){
+                    p.push(item) ;
+                }
+            })
+        }
+    })
+    return array ;
+}

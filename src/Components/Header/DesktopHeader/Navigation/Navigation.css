@@ -73,12 +73,13 @@ li.category div.title > div {
     display: flex;
     align-items: center;
     color: #444444ba;
-    font-size: 13px ;
-    padding: 0 11px;
+    font-size: 12px ;
+    font-weight: bold;
+    padding: 0 8px;
     height: 100%;
 }
 .nav > ul > li > a > div {
-    padding-left: 8px;
+    padding-left: 5px;
     font-size: 18px;
 }
 li.hover-bottom {

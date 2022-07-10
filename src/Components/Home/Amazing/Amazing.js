@@ -7,7 +7,7 @@ import AmazingTypo from "../../../Image/Amazing/amazing-typo.svg";
 import General from "../../../Image/Amazing/General.png";
 import { Link } from "react-router-dom";
 import {IoIosArrowBack, IoIosArrowForward, IoMdArrowBack} from "react-icons/io" ;
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import product1 from "../../../Image/Amazing/Product/محصول اول.jpg" ;
 import product2 from "../../../Image/Amazing/Product/محصول دوم.jpg";
 import product3 from "../../../Image/Amazing/Product/محصول سوم.jpg" ;
@@ -27,6 +27,9 @@ const Amazing = () => {
     const [hover , setHover] = useState(false) ;
     const [TopAmazing , setTopAmazing] = useState([]) ;
 
+    const pr = useRef() ;
+    const nx = useRef() ;
+
     useEffect(()=>{
         const Amazing = [
             {id:1 , title:"محصول اول" , img:product1 , price:"3000000" , percent:"14%"},
@@ -44,6 +47,27 @@ const Amazing = () => {
         ]
         setTopAmazing(Amazing) ;
     },[]) ;
+    
+    useEffect(()=>{
+        const prev = pr.current ;
+        const next = nx.current ;
+        if(hover){
+            if(prev || next){
+                prev.classList.remove("opacity-0") ;
+                prev.classList.add("opacity-100") ;
+                next.classList.remove("opacity-0") ;
+                next.classList.add("opacity-100") ;
+            }
+        }else{
+            if(prev || next){
+                prev.classList.remove("opacity-100") ;
+                prev.classList.add("opacity-0") ;
+                next.classList.remove("opacity-100") ;
+                next.classList.add("opacity-0") ;
+            }
+        }
+    },[hover])
+    // for prevent error in swiper-button-disabled ;
 
     if(!TopAmazing.length) return <div>Loading...</div> 
     return (
@@ -91,10 +115,10 @@ const Amazing = () => {
                         <span className="pt-4 text-sm text-444">مشاهده همه</span>
                     </div>
                 </SwiperSlide>
-                <div className={`swiper-prev slider-btn swiper-button-disabled right-1 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
+                <div ref={pr} className="swiper-prev slider-btn swiper-button-disabled right-1 shadow-md opacity-0" >
                     <IoIosArrowForward className="ml-1" />
                 </div>
-                <div className={`swiper-next slider-btn left-1 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
+                <div ref={nx} className="swiper-next slider-btn left-1 shadow-md opacity-0" >
                     <IoIosArrowBack className="mr-1" />
                 </div>
             </Swiper>

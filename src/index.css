@@ -94,5 +94,5 @@ body {
     }
 }
 .swiper-button-disabled {
-    display: none ;
+    opacity: 0 ;
 }

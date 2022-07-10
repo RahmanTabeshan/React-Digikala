@@ -1,21 +1,21 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io" ;
-import { useEffect, useState } from "react";
-import product1 from "../../../Image/digiOffer/mobile.jpg"
-import product2 from "../../../Image/digiOffer/mobile cover.jpg"
-import product3 from "../../../Image/digiOffer/headphone.jpg"
-import product4 from "../../../Image/digiOffer/watch.jpg"
-import product5 from "../../../Image/digiOffer/laptop.jpg"
-import product6 from "../../../Image/digiOffer/socks.jpg"
-import product7 from "../../../Image/digiOffer/cable.jpg"
-import product8 from "../../../Image/digiOffer/charger.jpg"
-import product9 from "../../../Image/digiOffer/console.jpg"
-import product10 from "../../../Image/digiOffer/smartbandjpg.jpg"
-import product11 from "../../../Image/digiOffer/power bank.jpg"
-import product12 from "../../../Image/digiOffer/tablet.jpg"
-import product13 from "../../../Image/digiOffer/cooler.jpg"
-import product14 from "../../../Image/digiOffer/cooler wat.jpg"
+import { useEffect, useRef, useState } from "react";
+import product1 from "../../../Image/digiOffer/mobile.jpg";
+import product2 from "../../../Image/digiOffer/mobile cover.jpg";
+import product3 from "../../../Image/digiOffer/headphone.jpg";
+import product4 from "../../../Image/digiOffer/watch.jpg";
+import product5 from "../../../Image/digiOffer/laptop.jpg";
+import product6 from "../../../Image/digiOffer/socks.jpg";
+import product7 from "../../../Image/digiOffer/cable.jpg";
+import product8 from "../../../Image/digiOffer/charger.jpg";
+import product9 from "../../../Image/digiOffer/console.jpg";
+import product10 from "../../../Image/digiOffer/smartbandjpg.jpg";
+import product11 from "../../../Image/digiOffer/power bank.jpg";
+import product12 from "../../../Image/digiOffer/tablet.jpg";
+import product13 from "../../../Image/digiOffer/cooler.jpg";
+import product14 from "../../../Image/digiOffer/cooler wat.jpg";
 import { sortArray } from "../../../Common/Functions";
 import Item from "./Item/Item";
 
@@ -23,6 +23,9 @@ const DigiOffer = () => {
 
     const [hover , setHover] = useState(false) ;
     const [list , setList] = useState([]) ;
+
+    const pr = useRef() ;
+    const nx = useRef() ;
 
     useEffect(()=>{
         const newList = [
@@ -46,15 +49,36 @@ const DigiOffer = () => {
         setList(sortArray(newList)) ;
     },[])
 
+    useEffect(()=>{
+        const prev = pr.current ;
+        const next = nx.current ;
+        if(hover){
+            if(prev || next){
+                prev.classList.remove("-right-10") ;
+                prev.classList.add("right-1") ;
+                next.classList.remove("-left-10") ;
+                next.classList.add("left-1") ;
+            }
+        }else{
+            if(prev || next){
+                prev.classList.remove("right-1") ;
+                prev.classList.add("-right-10") ;
+                next.classList.remove("left-1") ;
+                next.classList.add("-left-10") ;
+            }
+        }
+    },[hover])
+    // for prevent error in swiper-button-disabled ;
+
     if(!list.length) return(<div>Loading...</div>)
     return (
         <section className="w-98% lg:w-95% mt-5">
             <div className="w-full text-center py-4">
                 <h3 className="text-xl">پیشنهاد دیجی‌کالا</h3>
             </div>
-            <div 
-               className="border border-stone-300 rounded-xl"
-               onMouseEnter={()=>setHover(true)}
+            <div
+                className="border border-stone-300 rounded-xl"
+                onMouseEnter={()=>setHover(true)}
                 onMouseLeave={()=>setHover(false)}
             >
                 <Swiper
@@ -71,10 +95,10 @@ const DigiOffer = () => {
                             <Item items={item} />
                         </SwiperSlide>
                     ))}
-                    <div className={`swiper-prev slider-btn swiper-button-disabled right-1 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
+                    <div ref={pr} className="swiper-prev slider-btn shadow-md -right-10" >
                         <IoIosArrowForward className="ml-1" />
                     </div>
-                    <div className={`swiper-next slider-btn left-1 shadow-md ${hover ? "opacity-100" : "opacity-0" }`} >
+                    <div ref={nx} className="swiper-next slider-btn shadow-md -left-10" >
                         <IoIosArrowBack className="mr-1" />
                     </div>
                 </Swiper>

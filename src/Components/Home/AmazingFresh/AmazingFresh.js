@@ -39,7 +39,7 @@ const AmazingFresh = () => {
     },[])
 
     return (
-        <section className="relative w-98% lg:w-95% rounded-lg mt-6 overflow-hidden">
+        <section className="relative w-rsp rounded-lg mt-6 overflow-hidden">
             <Link 
                 to="/product/Amazing-Fresh/"
                 className="flex flex-col lg:flex-row lg:justify-between px-2 md:px-6 lg:px-8 xl:px-10 py-4 bg-gradient-to-l from-neutral-200 to-neutral-100 "

@@ -72,7 +72,7 @@ const Amazing = () => {
     if(!TopAmazing.length) return <div>Loading...</div> 
     return (
         <section 
-            className="w-98% lg:w-95% bg-red-600 rounded-lg py-4 px-2 mt-6"
+            className="w-rsp bg-red-600 rounded-lg py-4 px-2 mt-6"
             onMouseEnter={()=>setHover(true)}
             onMouseLeave={()=>setHover(false)}
         >

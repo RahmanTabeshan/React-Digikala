@@ -35,7 +35,7 @@ const Category = () => {
     },[])
 
     return (
-        <section className="flex flex-col w-98% lg:w-95% mt-5">
+        <section className="flex flex-col w-rsp mt-5">
             <div className="w-full text-center py-4">
                 <h3 className="text-xl">دسته‌بندی‌های دیجی‌کالا</h3>
             </div>

@@ -92,6 +92,9 @@ body {
     .after{
         @apply absolute w-full h-full inset-0 bg-black bg-opacity-5 
     }
+    .w-rsp{
+        @apply w-98% lg:w-95% 
+    }
 }
 .swiper-button-disabled {
     opacity: 0 ;

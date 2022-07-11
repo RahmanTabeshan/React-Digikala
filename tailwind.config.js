@@ -14,7 +14,8 @@ module.exports = {
             "fresh" : "url('/src/Image/Amazing-Fresh/bg.png')" ,
         },
         screens : {
-            mobile : "500px"
+            mobile : "500px" ,
+            m : "960px" ,
         },
         width : {
             "90%" : "90%" ,

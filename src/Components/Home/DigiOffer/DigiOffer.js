@@ -72,7 +72,7 @@ const DigiOffer = () => {
 
     if(!list.length) return(<div>Loading...</div>)
     return (
-        <section className="w-98% lg:w-95% mt-5">
+        <section className="w-rsp mt-5">
             <div className="w-full text-center py-4">
                 <h3 className="text-xl">پیشنهاد دیجی‌کالا</h3>
             </div>

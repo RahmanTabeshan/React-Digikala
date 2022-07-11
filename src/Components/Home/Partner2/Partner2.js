@@ -1,28 +1,21 @@
-import { useEffect, useState } from "react";
-import img1 from "../../../Image/Partner2/محصولات دسته اول.jpg";
-import img2 from "../../../Image/Partner2/محصولات دسته دوم.jpg";
 
-const Partner2 = () => {
-
-    const [list,setList] = useState([]) ;
-
-    useEffect(()=>{
-        const newList = [
-            {id:1 , title:"product1" , img:img1},
-            {id:2 , title:"product1" , img:img2},
-        ]
-        setList(newList) ;
-    },[])
+const Partner2 = ({list}) => {
 
     return (
-        <section className="flex gap-y-4 gap-x-3 flex-wrap justify-center lg:justify-between w-98% lg:w-95% mt-5">
-            {list.length ? (
-                list.map(item => (
-                    <div key={item.id} className="w-full md:w-[49%] rounded-2xl overflow-hidden" >
-                        <img src={item.img} alt={item.title} />
+        <section className="flex gap-y-4 gap-x-3 flex-wrap lg:flex-nowrap justify-center lg:justify-between w-rsp mt-5">
+            {list.length ? (list.length >= 4 ? (
+                list.map(item =>(
+                    <div key={item.id} className="w-[47.5%] lg:w-[24%] rounded-xl overflow-hidden">
+                        <img src={item.img} alt={item.title} className="w-full h-full" />
                     </div>
                 ))
             ) : (
+                list.map(item => (
+                    <div key={item.id} className="w-full m:w-[49%] rounded-2xl overflow-hidden" >
+                        <img src={item.img} alt={item.title} className="w-full" />
+                    </div>
+                ))
+            )): (
                 <div>Loading ...</div>
             )}
         </section>

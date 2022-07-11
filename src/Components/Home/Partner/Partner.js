@@ -1,5 +1,5 @@
 
-const Partner2 = ({list}) => {
+const Partner = ({list}) => {
 
     return (
         <section className="flex gap-y-4 gap-x-3 flex-wrap lg:flex-nowrap justify-center lg:justify-between w-rsp mt-5">
@@ -22,4 +22,4 @@ const Partner2 = ({list}) => {
     );
 }
  
-export default Partner2;
+export default Partner;

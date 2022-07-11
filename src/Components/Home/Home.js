@@ -5,7 +5,7 @@ import Brand from "./Brand/Brand";
 import Category from "./Category/Category";
 import DigiOffer from "./DigiOffer/DigiOffer";
 import "./Home.css";
-import Partner2 from "./Partner2/Partner2";
+import Partner from "./Partner/Partner";
 import Service from "./Service/Service";
 import Slider from "./Slider/Slider";
 import { useEffect, useState } from "react";
@@ -31,12 +31,12 @@ const Home = () => {
             <Service />
             <Amazing />
             <AmazingFresh />
-            <Partner2 list={partner1} />
+            <Partner list={partner1} />
             <Category />
-            <Partner2 list={partner2} />
+            <Partner list={partner2} />
             <DigiOffer />
             <Brand />
-            <Partner2 list={partner3} />
+            <Partner list={partner3} />
         </main>
     );
 };

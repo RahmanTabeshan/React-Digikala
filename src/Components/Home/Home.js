@@ -20,7 +20,7 @@ const Home = () => {
     const [partner2,setPartner2] = useState(false);
     const [partner3,setPartner3] = useState(false);
     useEffect(()=>{
-        setPartner1(partnerList);
+        setPartner1(partnerList) ;
         setPartner2(partner2List) ;
         setPartner3(partner3List) ;
     },[])

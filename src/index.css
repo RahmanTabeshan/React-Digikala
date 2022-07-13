@@ -55,8 +55,14 @@ body {
     direction: rtl;
     width: 100%;
 }
+main {
+    min-height: 19.2rem;
+}
 .ltr {
     direction: ltr ;
+}
+.rtl {
+    direction: rtl ;
 }
 @layer components {
     .header-child {
@@ -97,5 +103,5 @@ body {
     }
 }
 .swiper-button-disabled {
-    opacity: 0 ;
+    display: none ;
 }

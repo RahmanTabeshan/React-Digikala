@@ -2,7 +2,9 @@ import Layout from "../Components/Layout/Layout" ;
 const LoginPage = () => {
     return (
         <Layout>
-            <h1>LoginPage</h1>
+            <main>
+                <h1>LoginPage</h1>
+            </main>
         </Layout>
     );
 }

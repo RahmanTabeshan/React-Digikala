@@ -12,17 +12,21 @@ import { useEffect, useState } from "react";
 
 import { partnerList } from "../../Common/Partner";
 import { partner2List } from "../../Common/Partner2";
-import { partner3List } from "../../Common/Partner3";
+import { partner3List } from "../../Common/Partner3"; 
+import Visit from "./Visit/Visit";
+import { VisitList } from "../../Common/VisitList";
 
 const Home = () => {
 
     const [partner1,setPartner1] = useState(false);
     const [partner2,setPartner2] = useState(false);
     const [partner3,setPartner3] = useState(false);
+    const [visitList , setVisitList] = useState(false);
     useEffect(()=>{
         setPartner1(partnerList) ;
         setPartner2(partner2List) ;
         setPartner3(partner3List) ;
+        setVisitList(VisitList.slice(0,4)) ;
     },[])
 
     return (
@@ -37,6 +41,7 @@ const Home = () => {
             <DigiOffer />
             <Brand />
             <Partner list={partner3} />
+            <Visit visitList={visitList} />
         </main>
     );
 };

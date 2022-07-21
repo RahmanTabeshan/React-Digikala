@@ -16,6 +16,7 @@ import slide5 from "../../../Image/slider/slide5.jpg";
 import slide6 from "../../../Image/slider/slide6.jpg";
 import slide7 from "../../../Image/slider/slide7.jpg";
 import slide8 from "../../../Image/slider/slide8.jpg";
+import { useMediaQuery } from "react-responsive";
 
 
 const Slider = () => {
@@ -46,20 +47,27 @@ const Slider = () => {
     ];
 
     const [hover,setHover] = useState(false) ;
-
     const [slider,setSlider] = useState(false) ;
 
     useEffect(()=>{
         setTimeout(() => {
-            setSlider(sliderList)
+            setSlider(sliderList) ;
         }, 1000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
+    const lg = useMediaQuery({minWidth:1024}) ;
 
     return (
         <section className="w-full flex" onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)}  >
-            {!slider && <Skeleton width="100%" height={400} containerClassName="w-full" style={{top:"-2px"}} /> }
+            {!slider && 
+                <Skeleton 
+                    width="100%" 
+                    height="100%"
+                    containerClassName="w-full h-[140px] mobile:h-[170px] md:!h-[250px] lg:!h-[300px] xl:!h-[400px]" 
+                    style={{top:`${lg?"-2px" : "-4px"}`}} 
+                />
+            }
             {slider && 
                 <Swiper
                     loop={true}

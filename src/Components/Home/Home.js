@@ -17,15 +17,8 @@ import Visit from "./Visit/Visit";
 import { VisitList } from "../../Common/VisitList";
 
 const Home = () => {
-
-    const [partner1,setPartner1] = useState(false);
-    const [partner2,setPartner2] = useState(false);
-    const [partner3,setPartner3] = useState(false);
     const [visitList , setVisitList] = useState(false);
     useEffect(()=>{
-        setPartner1(partnerList) ;
-        setPartner2(partner2List) ;
-        setPartner3(partner3List) ;
         setVisitList(VisitList.slice(0,4)) ;
     },[])
 
@@ -35,12 +28,12 @@ const Home = () => {
             <Service />
             <Amazing />
             <AmazingFresh />
-            <Partner list={partner1} />
+            <Partner list={partnerList} />
             <Category />
-            <Partner list={partner2} />
+            <Partner list={partner2List} />
             <DigiOffer />
             <Brand />
-            <Partner list={partner3} />
+            <Partner list={partner3List} />
             <Visit visitList={visitList} />
         </main>
     );

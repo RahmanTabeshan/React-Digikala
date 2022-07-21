@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import SiteLoading from "./Components/SiteLoading.js/SiteLoading";
+import 'react-loading-skeleton/dist/skeleton.css' ;
+import SiteLoading from "./Components/SiteLoading/SiteLoading";
 import HomePage from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
 import NotFound from "./Pages/Not-Found";

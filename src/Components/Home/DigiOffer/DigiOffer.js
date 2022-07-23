@@ -18,11 +18,12 @@ import product13 from "../../../Image/digiOffer/cooler.jpg";
 import product14 from "../../../Image/digiOffer/cooler wat.jpg";
 import { sortArray } from "../../../Common/Functions";
 import Item from "./Item/Item";
+import Skeleton from "react-loading-skeleton";
 
 const DigiOffer = () => {
 
     const [hover , setHover] = useState(false) ;
-    const [list , setList] = useState([]) ;
+    const [list , setList] = useState(false) ;
 
     const pr = useRef() ;
     const nx = useRef() ;
@@ -46,7 +47,9 @@ const DigiOffer = () => {
             {id:15 , title:"محصول تست" , img:product14 , path:"/search/category-iranian-cooler/"},
             {id:16 , title:"محصول تست" , img:product14 , path:"/search/category-iranian-cooler/"},
         ]
-        setList(sortArray(newList)) ;
+        setTimeout(() => {
+            setList(sortArray(newList)) ;
+        }, 1000);
     },[])
 
     useEffect(()=>{
@@ -70,39 +73,52 @@ const DigiOffer = () => {
     },[hover])
     // for prevent error in swiper-button-disabled ;
 
-    if(!list.length) return(<div>Loading...</div>)
     return (
         <section className="w-rsp mt-5">
-            <div className="w-full text-center py-4">
-                <h3 className="text-xl">پیشنهاد دیجی‌کالا</h3>
-            </div>
-            <div
-                className="border border-stone-300 rounded-xl"
-                onMouseEnter={()=>setHover(true)}
-                onMouseLeave={()=>setHover(false)}
-            >
-                <Swiper
-                    slidesPerView={"auto"}
-                    navigation={{
-                        nextEl : ".swiper-next" ,
-                        prevEl : ".swiper-prev"
-                    }}
-                    spaceBetween={0}
-                    modules={[Navigation]}
-                >
-                    {list.map((item,index) => (
-                        <SwiperSlide key={index} className="swiper-offer min-w-[180px]" style={{width:"auto"}} >
-                            <Item items={item} />
-                        </SwiperSlide>
-                    ))}
-                    <div ref={pr} className="swiper-prev slider-btn shadow-md -right-10" >
-                        <IoIosArrowForward className="ml-1" />
+            {!list && 
+                <>
+                    <div className="w-full flex justify-center items-center py-4">
+                        <Skeleton width={150} height={25} />
                     </div>
-                    <div ref={nx} className="swiper-next slider-btn shadow-md -left-10" >
-                        <IoIosArrowBack className="mr-1" />
+                    <div className="w-full">
+                        <Skeleton height={300} />
                     </div>
-                </Swiper>
-            </div>
+                </>
+            }
+            {list && 
+                <>
+                    <div className="w-full text-center py-4">
+                        <h3 className="text-xl">پیشنهاد دیجی‌کالا</h3>
+                    </div>
+                    <div
+                        className="border border-stone-300 rounded-xl"
+                        onMouseEnter={()=>setHover(true)}
+                        onMouseLeave={()=>setHover(false)}
+                    >
+                        <Swiper
+                            slidesPerView={"auto"}
+                            navigation={{
+                                nextEl : ".swiper-next" ,
+                                prevEl : ".swiper-prev"
+                            }}
+                            spaceBetween={0}
+                            modules={[Navigation]}
+                        >
+                            {list.map((item,index) => (
+                                <SwiperSlide key={index} className="swiper-offer min-w-[180px]" style={{width:"auto"}} >
+                                    <Item items={item} />
+                                </SwiperSlide>
+                            ))}
+                            <div ref={pr} className="swiper-prev slider-btn shadow-md -right-10" >
+                                <IoIosArrowForward className="ml-1" />
+                            </div>
+                            <div ref={nx} className="swiper-next slider-btn shadow-md -left-10" >
+                                <IoIosArrowBack className="mr-1" />
+                            </div>
+                        </Swiper>
+                    </div>
+                </>
+            }
         </section>
     );
 }

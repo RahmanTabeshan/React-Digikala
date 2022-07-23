@@ -1,3 +1,5 @@
+import { IoIosArrowBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 import Item from "../Item/Item";
 
 const ListItem = ({item}) => {
@@ -11,6 +13,17 @@ const ListItem = ({item}) => {
                 {item.list.map(product => (
                     <Item key={product.id} item={product} />
                 ))}
+            </div>
+            <div className="flex justify-center mt-3">
+                    <Link 
+                        to="/"
+                        className="flex items-center w-max text-sm text-blue-500"
+                    >
+                        <p>مشاهده همه</p>
+                        <span className="pr-1">
+                            <IoIosArrowBack />
+                        </span>
+                    </Link>
             </div>
         </div>
     );

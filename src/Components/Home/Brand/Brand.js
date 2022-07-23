@@ -23,6 +23,7 @@ import img16 from "../../../Image/Brand/Bijan.png";
 import img17 from "../../../Image/Brand/mahya.png";
 import img18 from "../../../Image/Brand/schon.jpg";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Skeleton from "react-loading-skeleton";
 
 
 
@@ -55,7 +56,9 @@ const Brand = () => {
             {id:17,title:"Mahya Protein",img:img17},
             {id:18,title:"Schon",img:img18},
         ] ;
-        setBrand(list) ;
+        setTimeout(() => {
+            setBrand(list) ;
+        }, 1000);
     },[])
 
     useEffect(()=>{
@@ -79,41 +82,55 @@ const Brand = () => {
     },[hover])
     // for prevent error in swiper-button-disabled ;
 
-    if(!brand) return(<div> Loading ... </div>)
     return (
         <section 
-            className="w-rsp flex flex-col border border-stone-300 rounded-xl mt-5 pb-4"
+            className={`w-rsp flex flex-col border border-stone-300 rounded-xl mt-5 ${ brand ? "pb-4" : ""} overflow-hidden `}
             onMouseEnter={()=>setHover(true)}
             onMouseLeave={()=>setHover(false)}
         >
-            <div className="w-full flex justify-center items-center  py-4">
-                <GiStarFormation className="text-yellow-400 ml-3 text-2xl" />
-                <h3 className="text-xl">محبوب‌ترین برندها</h3>
-            </div>
-            <div className="w-full">
-                <Swiper
-                    slidesPerView={"auto"}
-                    navigation={{
-                        nextEl : ".swiper-next" ,
-                        prevEl : ".swiper-prev"
-                    }}
-                    spaceBetween={0}
-                    modules={[Navigation]}
-                    className="last:border-b-0"
-                >
-                    {brand.map(item=>(
-                        <SwiperSlide key={item.id} style={{width:"auto"}} className={`min-w-[150px] ${styles.swiperSlide}`} >
-                            <Item item={item} />
-                        </SwiperSlide>
-                    ))}
-                     <div ref={pr} className="swiper-prev slider-btn shadow-md -right-10" >
-                        <IoIosArrowForward className="ml-1" />
+            {!brand && 
+                <>
+                    <div className="w-full flex justify-center items-center  py-4">
+                        <Skeleton circle={true} width={20} height={20} containerClassName="ml-2" />
+                        <Skeleton width={180} height={25} />
                     </div>
-                    <div ref={nx} className="swiper-next slider-btn shadow-md -left-10" >
-                        <IoIosArrowBack className="mr-1" />
+                    <div className="w-full">
+                        <Skeleton height={130} />
                     </div>
-                </Swiper>
-            </div>
+                </>
+            }
+            {brand &&
+                <>
+                    <div className="w-full flex justify-center items-center  py-4">
+                        <GiStarFormation className="text-yellow-400 ml-3 text-2xl" />
+                        <h3 className="text-xl">محبوب‌ترین برندها</h3>
+                    </div>
+                    <div className="w-full">
+                        <Swiper
+                            slidesPerView={"auto"}
+                            navigation={{
+                                nextEl : ".swiper-next" ,
+                                prevEl : ".swiper-prev"
+                            }}
+                            spaceBetween={0}
+                            modules={[Navigation]}
+                            className="last:border-b-0"
+                        >
+                            {brand.map(item=>(
+                                <SwiperSlide key={item.id} style={{width:"auto"}} className={`min-w-[150px] ${styles.swiperSlide}`} >
+                                    <Item item={item} />
+                                </SwiperSlide>
+                            ))}
+                            <div ref={pr} className="swiper-prev slider-btn shadow-md -right-10" >
+                                <IoIosArrowForward className="ml-1" />
+                            </div>
+                            <div ref={nx} className="swiper-next slider-btn shadow-md -left-10" >
+                                <IoIosArrowBack className="mr-1" />
+                            </div>
+                        </Swiper>
+                    </div>
+                </>
+            }
         </section>
     );
 }

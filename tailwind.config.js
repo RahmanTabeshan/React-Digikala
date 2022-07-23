@@ -12,6 +12,7 @@ module.exports = {
             "logo" : "url('/src/Image/logo.svg')" ,
             "digi" : "url('/src/Image/digi.svg')" ,
             "fresh" : "url('/src/Image/Amazing-Fresh/bg.png')" ,
+            "bgPlus" : "url('/src/Image/bgDigiplus/plus-widget.png')"
         },
         screens : {
             mobile : "500px" ,

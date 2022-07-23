@@ -47,8 +47,8 @@ const Service = () => {
             </>
             ) : (
                 <>
-                    {Array(services.length).fill(1).map((item,index)=>(
-                        <div className="flex flex-col items-center" key={index}>
+                    {Array(services.length+1).fill(1).map((item,index)=>(
+                        <div className="flex flex-col items-center  w-1/4 lg:w-max" key={index}>
                             <Skeleton width={52} height={52} />
                             <Skeleton width={60} height={15} />
                         </div>

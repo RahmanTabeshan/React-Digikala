@@ -15,6 +15,7 @@ import { partner3List } from "../../Common/Partner3";
 import Visit from "./Visit/Visit";
 import { VisitList } from "../../Common/VisitList";
 import DigiPlus from "./DigiPlus/DigiPlus";
+import DigiClub from "./DigiClub/DigiClub";
 
 const Home = () => {
 
@@ -32,7 +33,8 @@ const Home = () => {
             <Partner list={partner3List} />
             <Visit visitList={VisitList.slice(0,4)} />
             <DigiPlus />
-            <Visit visitList={VisitList.slice(4,8)} />
+            <DigiClub />
+            <Visit visitList={VisitList.slice(0,4)} />
         </main>
     );
 };

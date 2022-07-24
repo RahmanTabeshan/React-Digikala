@@ -9,7 +9,7 @@ const Partner = ({list}) => {
 
         setTimeout(() => {
             setPartner(list) ;
-        }, 1000);
+        }, 2000);
 
     },[list])
 
@@ -29,8 +29,8 @@ const Partner = ({list}) => {
                 ))
             )): (
                 Array(list.length).fill(1).map((item,index)=>(
-                    <div key={index} className={`${list.length>3 ? "w-[24%]" : "w-[49%]"} h-[230px]`}>
-                        <Skeleton className="partner-skeleton" width="100%" height="100%"/>
+                    <div key={index} className={`${list.length > 3 ? "w-[45%] aspect-[1/.75]" : " w-[49%] aspect-[1/.5]" }`}>
+                        <Skeleton height="100%" containerClassName="flex h-full"/>
                     </div>
                 ))
             )}

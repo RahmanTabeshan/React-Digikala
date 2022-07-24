@@ -80,7 +80,7 @@ const DigiPlus = () => {
                             {plus.map(item=>(
                                 <Link
                                     key={item.id}
-                                    to={`/profuct/${item.id}/${item.title.split(" ").join("_")}/`}
+                                    to={`/product/${item.id}/${item.title.split(" ").join("_")}/`}
                                     className="flex justify-center"
 
                                 >

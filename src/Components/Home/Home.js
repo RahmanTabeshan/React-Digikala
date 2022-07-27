@@ -12,10 +12,12 @@ import Slider from "./Slider/Slider";
 import { partnerList } from "../../Common/Partner";
 import { partner2List } from "../../Common/Partner2";
 import { partner3List } from "../../Common/Partner3"; 
+import { partner4List } from "../../Common/partner4"; 
 import Visit from "./Visit/Visit";
 import { VisitList } from "../../Common/VisitList";
 import DigiPlus from "./DigiPlus/DigiPlus";
 import DigiClub from "./DigiClub/DigiClub";
+import BestSelling from "./BestSelling/BestSelling";
 
 const Home = () => {
 
@@ -35,6 +37,8 @@ const Home = () => {
             <DigiPlus />
             <DigiClub />
             <Visit visitList={VisitList.slice(0,4)} />
+            <BestSelling />
+            <Partner list={partner4List} />
         </main>
     );
 };

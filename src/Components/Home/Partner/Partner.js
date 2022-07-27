@@ -9,7 +9,7 @@ const Partner = ({list}) => {
 
         setTimeout(() => {
             setPartner(list) ;
-        }, 2000);
+        }, 1000);
 
     },[list])
 
@@ -23,13 +23,13 @@ const Partner = ({list}) => {
                 ))
             ) : (
                 list.map(item => (
-                    <div key={item.id} className="w-full m:w-[49%] rounded-2xl overflow-hidden" >
+                    <div key={item.id} className={`w-full ${list.length===2 && "m:w-[49%]"} rounded-2xl overflow-hidden`} >
                         <img src={item.img} alt={item.title} className="w-full" />
                     </div>
                 ))
             )): (
                 Array(list.length).fill(1).map((item,index)=>(
-                    <div key={index} className={`${list.length > 3 ? "w-[45%] aspect-[1/.75]" : " w-[49%] aspect-[1/.5]" }`}>
+                    <div key={index} className={`${list.length > 3 ? "w-[45%] aspect-[1/.75]" : list.length === 2 ? " w-[49%] aspect-[1/.5]" : "w-full aspect-[1/.1]" }`}>
                         <Skeleton height="100%" containerClassName="flex h-full"/>
                     </div>
                 ))

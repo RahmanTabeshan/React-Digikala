@@ -19,6 +19,7 @@ import DigiPlus from "./DigiPlus/DigiPlus";
 import DigiClub from "./DigiClub/DigiClub";
 import BestSelling from "./BestSelling/BestSelling";
 import Auction from "./Auction/Auction";
+import Readable from "./Readable/Readable";
 
 const Home = () => {
 
@@ -41,6 +42,7 @@ const Home = () => {
             <BestSelling />
             <Partner list={partner4List} />
             <Auction />
+            <Readable />
         </main>
     );
 };

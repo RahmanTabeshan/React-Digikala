@@ -18,6 +18,7 @@ import { VisitList } from "../../Common/VisitList";
 import DigiPlus from "./DigiPlus/DigiPlus";
 import DigiClub from "./DigiClub/DigiClub";
 import BestSelling from "./BestSelling/BestSelling";
+import Auction from "./Auction/Auction";
 
 const Home = () => {
 
@@ -39,6 +40,7 @@ const Home = () => {
             <Visit visitList={VisitList.slice(0,4)} />
             <BestSelling />
             <Partner list={partner4List} />
+            <Auction />
         </main>
     );
 };

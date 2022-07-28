@@ -110,7 +110,7 @@ const Amazing = () => {
                         </div>
                     </SwiperSlide>
                     {TopAmazing.map(item=>(
-                        <SwiperSlide style={{width:"auto"}} key={item.id} className={`${Styles.Amazing} ${Styles.SwiperSlide} Amazing bg-white`} >
+                        <SwiperSlide style={{width:"auto"}} key={item.id} className={`${Styles.Amazing} ${Styles.SwiperSlide} Amazing bg-white overflow-hidden`} >
                             <Item item={item} />
                         </SwiperSlide>
                     ))}

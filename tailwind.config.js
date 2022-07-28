@@ -36,6 +36,9 @@ module.exports = {
                 "0% , 100%" : {background:"#fff"} ,
                 "50%" : {background:"#cbcbcb"} ,
             }
+        },
+        gridTemplateColumns:{
+            "auto" : "repeat(auto-fit,minmax(200px,1fr))"
         }
     },
   },

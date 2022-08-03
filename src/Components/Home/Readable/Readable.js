@@ -51,7 +51,7 @@ const Readable = () => {
                 }
                 {!list && 
                     Array(4).fill(1).map((item,index)=>(
-                        <div className="flex flex-col">
+                        <div key={index} className="flex flex-col">
                             <Skeleton height="100%" containerClassName="aspect-[610/380]" />
                             <div className="my-6 mobile:my-4 px-2">
                                 <Skeleton height={15}  />

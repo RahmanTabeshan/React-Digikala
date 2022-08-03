@@ -58,6 +58,9 @@ body {
 main {
     min-height: 19.2rem;
 }
+html , body {
+    scroll-behavior: smooth ;
+}
 .ltr {
     direction: ltr ;
 }

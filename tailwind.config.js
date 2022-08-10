@@ -16,6 +16,8 @@ module.exports = {
         },
         screens : {
             mobile : "500px" ,
+            sm : "650px" ,
+            xs : "551px" ,
             m : "960px" ,
         },
         width : {

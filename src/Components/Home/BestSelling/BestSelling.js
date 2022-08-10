@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { sortArray } from "../../../Common/Functions";
+import { sortArray } from "../../../Lists/Functions";
 import product1 from "../../../Image/digiOffer/mobile.jpg";
 import product2 from "../../../Image/digiOffer/mobile cover.jpg";
 import product3 from "../../../Image/digiOffer/headphone.jpg";

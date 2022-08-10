@@ -16,7 +16,7 @@ import product11 from "../../../Image/digiOffer/power bank.jpg";
 import product12 from "../../../Image/digiOffer/tablet.jpg";
 import product13 from "../../../Image/digiOffer/cooler.jpg";
 import product14 from "../../../Image/digiOffer/cooler wat.jpg";
-import { sortArray } from "../../../Common/Functions";
+import { sortArray } from "../../../Lists/Functions";
 import Item from "./Item/Item";
 import Skeleton from "react-loading-skeleton";
 

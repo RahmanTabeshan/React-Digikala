@@ -104,6 +104,9 @@ html , body {
     .w-rsp{
         @apply w-98% lg:w-95% 
     }
+    .btn-back-to-top{
+        @apply flex items-center border text-stone-500 border-stone-300 rounded-lg p-3 transition-all duration-500 hover:bg-stone-300 hover:text-white
+    }
 }
 .swiper-button-disabled {
     display: none ;

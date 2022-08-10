@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
     return (
         <>
             {desktop ? <DesktopHeader /> : <ResponseHeader/>}
-                {children}
+                {/* {children} */}
             <Footer />
         </>
     );

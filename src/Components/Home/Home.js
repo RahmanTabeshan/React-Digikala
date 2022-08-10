@@ -9,12 +9,12 @@ import Partner from "./Partner/Partner";
 import Service from "./Service/Service";
 import Slider from "./Slider/Slider";
 
-import { partnerList } from "../../Common/Partner";
-import { partner2List } from "../../Common/Partner2";
-import { partner3List } from "../../Common/Partner3"; 
-import { partner4List } from "../../Common/partner4"; 
+import { partnerList } from "../../Lists/Partner";
+import { partner2List } from "../../Lists/Partner2";
+import { partner3List } from "../../Lists/Partner3"; 
+import { partner4List } from "../../Lists/partner4"; 
 import Visit from "./Visit/Visit";
-import { VisitList } from "../../Common/VisitList";
+import { VisitList } from "../../Lists/VisitList";
 import DigiPlus from "./DigiPlus/DigiPlus";
 import DigiClub from "./DigiClub/DigiClub";
 import BestSelling from "./BestSelling/BestSelling";

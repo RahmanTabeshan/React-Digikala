@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import digiClub from "../../../Image/DigiClub/digiclub-logo-white.svg" ;
 import point from "../../../Image/DigiClub/club-point.svg" ;
 import { useEffect, useState } from "react";
-import {digiClubList} from "../../../Common/DigiClub" ;
+import {digiClubList} from "../../../Lists/DigiClub" ;
 import Skeleton from "react-loading-skeleton";
 
 const DigiClub = () => {

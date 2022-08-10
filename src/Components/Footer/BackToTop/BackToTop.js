@@ -1,6 +1,17 @@
+import { Fragment, useEffect, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
+import Skeleton from "react-loading-skeleton";
 
 const BackToTop = () => {
+
+    const [loading,setLoading] = useState(true) ;
+
+    useEffect(()=>{
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000);
+    },[])
+
     const topHandler = () => {
         document.documentElement.scrollTo({
             top: 0,
@@ -13,12 +24,18 @@ const BackToTop = () => {
     };
     
     return (
-        <button
-            className="flex items-center border text-stone-500 border-stone-300 rounded-lg p-3 transition-all duration-500 hover:bg-stone-300 hover:text-white"
-            onClick={() => topHandler()}>
-            <span className="text-sm">بازگشت به بالا</span>
-            <IoIosArrowUp className="mr-2" />
-        </button>
+        <Fragment>
+            {!loading && 
+                <button
+                    className="btn-back-to-top"
+                    onClick={() => topHandler()}
+                >
+                    <span className="text-sm">بازگشت به بالا</span>
+                    <IoIosArrowUp className="mr-2" />
+                </button>
+            }
+            {loading && <Skeleton width={150} height={45} />}
+        </Fragment>
     );
 };
 

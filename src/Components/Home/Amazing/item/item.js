@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom" ;
-import {money_format} from "../../../../Common/Functions" ;
+import {money_format} from "../../../../Lists/Functions" ;
 
 const Item = ({item}) => {
 

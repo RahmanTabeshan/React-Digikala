@@ -39,12 +39,12 @@ const Support = () => {
     },[])
 
     return (
-        <>
+        <section className="flex flex-wrap gap-y-8 gap-x-4 md:gap-x-[63.3px] w-full justify-center">
             <SupportList title="با دیجی‌کالا" items={support1} NumSkeleton="6" className="grow" />
             <SupportList title="خدمات مشتریان" items={support2} NumSkeleton="5" className="grow" />
             <SupportList title="راهنمای خرید از دیجی‌کالا" items={support3} NumSkeleton="3" className="md:grow grow-0" />
             <Social />
-        </>
+        </section>
     );
 }
  

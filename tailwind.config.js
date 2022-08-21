@@ -15,6 +15,7 @@ module.exports = {
             "bgPlus" : "url('/src/Image/bgDigiplus/plus-widget.png')"
         },
         screens : {
+            BreakPoint : "1075px",
             mobile : "500px" ,
             sm : "650px" ,
             xs : "551px" ,

@@ -28,7 +28,7 @@ const Faq = () => {
     },[])
 
     return (
-        <>
+        <section className="flex flex-wrap justify-center gap-x-3 gap-y-4 my-8">
             { faqList && faqList.map(faq=>(
                 <FaqItem key={faq.id} item={faq} />
             ))}
@@ -38,7 +38,7 @@ const Faq = () => {
                     <Skeleton width={130} height={15} containerClassName="mt-2" />
                 </div>
             ))}
-        </>
+        </section>
     );
 }
  

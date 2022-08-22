@@ -5,7 +5,7 @@ import Skeleton from "react-loading-skeleton" ;
 
 const Namad = ({loading}) => {
     return (
-        <div className="flex justify-between md:justify-end w-full h-max">
+        <div className="flex justify-around md:justify-end w-full h-max">
             {!loading && 
                 <>
                     <div className="border border-neutral-300 rounded-lg p-4 mr-2 ">

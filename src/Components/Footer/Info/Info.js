@@ -15,15 +15,13 @@ const Info = () => {
         }, 2000);
     },[])
 
-    console.log(loading) ;
-
     return (
-        <section className="flex flex-col md:flex-row gap-y-8 border-t border-t-neutral-200 mt-7 py-8">
+        <section className="flex flex-col md:flex-row gap-y-8 border-y border-y-neutral-200 mt-7 py-8">
             <div className="ml-5 lg:ml-10">
                 { !loading &&
                     <>
                         <h1 className="text-sm font-bold mb-2">فروشگاه اینترنتی دیجی‌کالا، بررسی، انتخاب و خرید آنلاین</h1>
-                        <p className="text-xs text-neutral-500 mb-3 leading-6">یک خرید اینترنتی مطمئن، نیازمند فروشگاهی است که بتواند کالاهایی متنوع، باکیفیت و دارای قیمت مناسب را در مدت زمانی کوتاه به دست مشتریان خود برساند و ضمانت بازگشت کالا هم داشته باشد؛ ویژگی‌هایی که فروشگاه اینترنتی دیجی‌کالا سال‌هاست بر روی آن‌ها کار کرده و توانسته از این طریق مشتریان ثابت خود را داشته باشد.
+                        <p className="text-xs text-neutral-500 mb-3 leading-8">یک خرید اینترنتی مطمئن، نیازمند فروشگاهی است که بتواند کالاهایی متنوع، باکیفیت و دارای قیمت مناسب را در مدت زمانی کوتاه به دست مشتریان خود برساند و ضمانت بازگشت کالا هم داشته باشد؛ ویژگی‌هایی که فروشگاه اینترنتی دیجی‌کالا سال‌هاست بر روی آن‌ها کار کرده و توانسته از این طریق مشتریان ثابت خود را داشته باشد.
                         </p>
                         <DesList display={display} />
                         <div 
@@ -44,8 +42,6 @@ const Info = () => {
                         <Skeleton width={100} height={20} containerClassName="flex mt-8" />
                     </>
                 }
-                    
-               
             </div>
             <Namad loading={loading} />
         </section>

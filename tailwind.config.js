@@ -37,7 +37,7 @@ module.exports = {
         keyframes:{
             fade : {
                 "0% , 100%" : {background:"#fff"} ,
-                "50%" : {background:"#cbcbcb"} ,
+                "50%" : {background:"#4f4f4f"} ,
             }
         },
         gridTemplateColumns:{

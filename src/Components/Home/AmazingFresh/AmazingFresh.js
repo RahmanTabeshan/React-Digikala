@@ -4,14 +4,9 @@ import { Link } from "react-router-dom";
 import Fresh from "../../../Image/Amazing-Fresh/fresh.png" ;
 import FreshTypo from "../../../Image/Amazing-Fresh/fresh.svg" ;
 import Item from "./Item/Item";
-import product100 from "../../../Image/Amazing-Fresh/product/محصول شماره صد.jpg" ;
-import product101 from "../../../Image/Amazing-Fresh/product/محصول شماره صد و یک.jpg" ;
-import product102 from "../../../Image/Amazing-Fresh/product/محصول شماره صد و دو.jpg" ;
-import product103 from "../../../Image/Amazing-Fresh/product/محصول شماره صد و سه.jpg" ;
-import product104 from "../../../Image/Amazing-Fresh/product/محصول شماره صد و چهار.jpg" ;
-import product105 from "../../../Image/Amazing-Fresh/product/محصول شماره صد و پنج.jpg" ;
 import { IoMdArrowBack } from "react-icons/io"
 import Skeleton from "react-loading-skeleton";
+import { useSelector } from "react-redux";
 
 const AmazingFresh = () => {
 
@@ -27,14 +22,9 @@ const AmazingFresh = () => {
 
     const [freshList,setFreshList] = useState(false) ;
 
-    const fresh = [
-        {id:100,title:"محصول شماره صد" , img:product100 , percent:"18%"},
-        {id:101,title:"محصول شماره صد و یک" , img:product101 , percent:"11%"},
-        {id:102,title:"محصول شماره صد و دو" , img:product102 , percent:"28%"},
-        {id:103,title:"محصول شماره صد و سه" , img:product103 , percent:"15%"},
-        {id:104,title:"محصول شماره صد و چهار" , img:product104 , percent:"14%"},
-        {id:105,title:"محصول شماره صد و پنج" , img:product105 , percent:"9%"},
-    ]
+    const Products = useSelector(state => state.Products) ;
+    const fresh = Products.filter(p=>p.category === "کالای سوپرمارکتی") ;
+
     useEffect(()=>{
         setTimeout(() => {
             setFreshList(fresh) ;

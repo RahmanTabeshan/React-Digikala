@@ -9,7 +9,6 @@ import Services from "./Services/Services";
 import Support from "./Support/Support";
 
 const Footer = () => {
-
     
     return (
         <footer className="flex flex-col w-full bg-neutral-50 mt-5 pt-8 border-t border-t-stone-300">

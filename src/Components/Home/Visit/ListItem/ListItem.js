@@ -1,8 +1,13 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Item from "../Item/Item";
+import { useSelector } from "react-redux";
 
 const ListItem = ({item}) => {
+
+    const Products = useSelector(state=>state.Products) ;
+    const list = Products.filter(p=>p.type === item.title) ;
+
     return (
         <div className="flex flex-col bg-white p-4 w-full">
             <div className="flex flex-col items-start">
@@ -10,7 +15,7 @@ const ListItem = ({item}) => {
                 <p className="text-gray-500 text-xs pt-2">براساس بازدیدهای شما</p>
             </div>
             <div className="grid grid-cols-2 gap-px bg-neutral-300 mt-2">
-                {item.list.map(product => (
+                {list.map(product => (
                     <Item key={product.id} item={product} />
                 ))}
             </div>

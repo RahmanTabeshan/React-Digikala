@@ -1,7 +1,19 @@
+import { useEffect } from "react";
 import {useParams} from "react-router-dom" ;
 import Layout from "../Components/Layout/Layout";
 
 const ProductPage = () => {
+
+    useEffect(()=>{
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        document.body.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    },[])
 
     const params = useParams() ;
     return (
@@ -11,6 +23,7 @@ const ProductPage = () => {
                 <div className="ltr">
                     <div>Product id is : {params.id}</div>
                     <div>Product title is : {params.title.split("_").join(" ")}</div>
+                    <button>افزودن به سبد خرید</button>
                 </div>
             </main>
         </Layout>

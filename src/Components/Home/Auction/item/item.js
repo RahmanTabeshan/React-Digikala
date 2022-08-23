@@ -6,7 +6,7 @@ const Item = ({item}) => {
     return (
         <Link
             to={`/product/${item.id}/${item.title.split(" ").join("_")}/`}
-            className="w-[179px] flex flex-col items-center px-4 py-6 bg-white"
+            className="min-w-[179px] flex flex-col items-center px-4 py-6 bg-white"
         >
             <div className="w-[150px] h-[150px]">
                 <img src={item.img} alt={item.title} className="w-full h-full" />

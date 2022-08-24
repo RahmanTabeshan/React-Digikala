@@ -5,12 +5,12 @@ import { BsQuestionSquare } from "react-icons/bs";
 import { BsShop } from "react-icons/bs";
 import Search from "../Common/Search/Search";
 import { TbLogin } from "react-icons/tb";
-import { RiShoppingCartLine } from "react-icons/ri";
 import { GrLocation } from "react-icons/gr";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
 import Nav from "../Common/Nav/Nav";
 import Category from "./Category/Category";
+import Cart from "../Common/Cart/Cart";
 
 const styles = {
     searchBox: Styles.search_box,
@@ -43,11 +43,7 @@ const ResponseHeader = () => {
                     <TbLogin className="text-2xl ml-2" />
                     ورود
                 </Link>
-                <div className="w-max">
-                    <Link to="/checkout/cart/">
-                        <RiShoppingCartLine className="cart-icon transition-all duration-200 hover:text-stone-500" />
-                    </Link>
-                </div>
+                <Cart className="w-max" />
             </div>
             <div className="header-child border-none">
                 <div className="location w-full">

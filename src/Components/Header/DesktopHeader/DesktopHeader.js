@@ -1,11 +1,11 @@
 
 import { Link } from "react-router-dom";
 import "./DesktopHeader.css";
-import Styles from "./DesktopHeader.module.css"
+import Styles from "./DesktopHeader.module.css";
 import Search from "../Common/Search/Search";
 import UserOperation from "./UserOpration/UserOperation";
 import Navigation from "./Navigation/Navigation";
-import { RiShoppingCartLine } from "react-icons/ri";
+import Cart from "../Common/Cart/Cart";
 
 const DesktopHeader = () => {
 
@@ -26,11 +26,7 @@ const DesktopHeader = () => {
                     <div className='top-left-header'>
                         <UserOperation />
                         <span></span>
-                        <div className='cart'>
-                            <Link to='/checkout/cart/'>
-                                <RiShoppingCartLine className='cart-icon' />
-                            </Link>
-                        </div>
+                        <Cart className="cart" />
                     </div>
                 </div>
                 <Navigation />

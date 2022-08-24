@@ -107,6 +107,18 @@ html , body {
     .btn-back-to-top{
         @apply flex items-center border text-stone-500 border-stone-300 rounded-lg p-3 transition-all duration-500 hover:bg-stone-300 hover:text-white
     }
+    .btn-disabled {
+        @apply !border-red-500 bg-red-100 hover:!bg-red-100
+    }
+    .btn-cart {
+        @apply flex items-center justify-center border-2 border-blue-500 w-7 h-7 text-blue-500 transition-all duration-200 hover:text-blue-700 hover:bg-blue-100
+    }
+    .btn-cart-remove{
+        @apply flex items-center justify-center border border-blue-500 px-2 py-1 rounded-md text-blue-500 transition-all duration-200 hover:text-blue-700 hover:bg-blue-100
+    }
+    .btn-add-cart{
+        @apply border border-blue-500 text-blue-500 px-4 py-2 rounded-lg mt-4 transition-all duration-200 hover:text-blue-700 hover:bg-blue-100
+    }
 }
 .swiper-button-disabled {
     display: none ;

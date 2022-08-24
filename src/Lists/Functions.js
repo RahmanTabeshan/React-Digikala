@@ -28,3 +28,17 @@ export function sortArray(Array,numSort=2){
     })
     return array ;
 }
+
+export function scrollToTop(){
+    return(
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        }) 
+        ||
+        document.body.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        })
+    )
+}

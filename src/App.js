@@ -7,6 +7,9 @@ import HomePage from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
 import NotFound from "./Pages/Not-Found";
 import ProductPage from "./Pages/ProductPage";
+import CartPage from "./Pages/CartPage";
+import { Provider } from "react-redux";
+import store from "./Components/Redux/Store";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -30,12 +33,15 @@ const App = () => {
 
     if(loading) return <SiteLoading />;
     return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/users/login/" element={<LoginPage />} />
-            <Route path="/Product/:id/:title/" element={<ProductPage />} />
-            <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Provider store={store}>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/users/login/" element={<LoginPage />} />
+                <Route path="/Product/:id/:title/" element={<ProductPage />} />
+                <Route path="/checkout/cart/" element={<CartPage />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </Provider>
     );
 };
 

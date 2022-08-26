@@ -3,6 +3,8 @@ import {money_format} from "../../../../Lists/Functions" ;
 
 const Item = ({item}) => {
 
+    const percentMoney = item.price - (item.price * (parseInt(item.percent)/100)) 
+
     return (
         <Link
             to={`/product/${item.id}/${item.title.split(" ").join("_")}/`}
@@ -16,7 +18,7 @@ const Item = ({item}) => {
                     {item.percent}
                 </span>
                 <div className="relative">
-                    <span>{money_format(item.price)}</span>
+                    <span>{money_format(percentMoney.toFixed())}</span>
                     <span className="relative -left-1 text-[11px]">توما</span>
                     <div className="absolute text-[11px] -top-[6px] -left-1">ن</div>
                 </div>

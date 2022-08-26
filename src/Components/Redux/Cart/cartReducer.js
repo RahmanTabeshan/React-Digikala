@@ -5,8 +5,10 @@ const initialState = JSON.parse(localStorage.getItem("cart")) || [] ;
 const cartReducer = (state=initialState,action)=>{
     switch (action.type) {
         case ADD_TO_CART:{
-            localStorage.setItem("cart" , JSON.stringify([...state , action.Product]))
-            return [...state , action.Product] ;
+            const newCart = [...state] ;
+            newCart.push(action.Product) ;
+            localStorage.setItem("cart" , JSON.stringify(newCart))
+            return newCart ;
         }
         case REMOVE :{
             const newState = [...state] ;

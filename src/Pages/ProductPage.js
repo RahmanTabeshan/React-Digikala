@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../Components/Layout/Layout";
 import {addToCart, decrement, increment, remove} from "../Components/Redux/Cart/CartActions";
 import { money_format, scrollToTop } from "../Lists/Functions";
+import {HiOutlineTrash} from "react-icons/hi" ;
 
 const ProductPage = () => {
     const params = useParams();
@@ -12,12 +13,12 @@ const ProductPage = () => {
     const Cart = useSelector((state) => state.Cart);
     const dispatch = useDispatch();
     
-    const isToCart = Cart.find((item) => item.id === parseInt(params.id));
+    const ProductInCart = Cart.find((item) => item.id === parseInt(params.id));
     const Product = Products.find(
         (p) => p.id === parseInt(params.id)
         );
         
-    const numOfProduct = isToCart ? isToCart.quantity : 1 ;
+    const numOfProduct = ProductInCart ? ProductInCart.quantity : 1 ;
     const percentMoney = Product.price - (Product.price * (parseInt(Product.percent)/100)) 
 
     const addCart = (id) => {
@@ -25,16 +26,16 @@ const ProductPage = () => {
         dispatch(addToCart(newProduct));
     };
 
-    const DecrementHandler = (id)=>{
-        dispatch(decrement(id))
+    const DecrementHandler = (ProductInCart)=>{
+        if(ProductInCart.quantity > 1){
+            dispatch(decrement(ProductInCart.id))
+        }else{
+            dispatch(remove(ProductInCart.id))
+        }
     }
 
     const IncrementHandler = (id)=>{
         dispatch(increment(id)) ;
-    }
-
-    const RemoveHandler = (id)=>{
-        dispatch(remove(id)) ;
     }
 
     useEffect(() => {
@@ -54,18 +55,17 @@ const ProductPage = () => {
                     <div className="mt-4">
                         {money_format((percentMoney.toFixed()) * parseInt(numOfProduct)+"0")} IR 
                     </div>
-                    {isToCart && (
-                        <div className="flex justify-between w-full mt-4 px-8">
+                    {ProductInCart && (
+                        <div className="flex justify-center w-full mt-4 px-8">
                             <div className="flex items-center">
                                 <button 
-                                    className={`${isToCart.quantity===1 ? "btn-disabled" : ""} btn-cart rounded-l-md`}
-                                    onClick={()=>DecrementHandler(params.id)}
-                                    disabled={isToCart.quantity === 1 ? true : false }
+                                    className={`${ProductInCart.quantity===1 ? "btn-cart-remove" : "btn-cart"}  rounded-l-md`}
+                                    onClick={()=>DecrementHandler(ProductInCart)}
                                 >
-                                    -
+                                    {ProductInCart.quantity>1 ? "-":<HiOutlineTrash />}
                                 </button>
                                 <div className="flex items-center justify-center w-7 h-7 border-y border-y-blue-500 text-blue-500">
-                                    {isToCart.quantity}
+                                    {ProductInCart.quantity}
                                 </div>
                                 <button 
                                     className="btn-cart rounded-r-md"
@@ -74,19 +74,13 @@ const ProductPage = () => {
                                     +
                                 </button>
                             </div>
-                            <button 
-                                className="btn-cart-remove"
-                                onClick={()=>RemoveHandler(params.id)}
-                            >
-                                Delete
-                            </button>
                         </div>
                     )}
                     <button
-                        className={` ${isToCart ? "!bg-blue-100 !text-blue-700" : ""} btn-add-cart`}
-                        disabled={isToCart ? true : false}
+                        className={` ${ProductInCart ? "!bg-blue-100 !text-blue-700" : ""} btn-add-cart`}
+                        disabled={ProductInCart ? true : false}
                         onClick={()=>addCart(params.id)}>
-                        {isToCart
+                        {ProductInCart
                             ? "محصول به سبد خرید اضافه شد"
                             : "افزودن به سبد خرید"}
                     </button>

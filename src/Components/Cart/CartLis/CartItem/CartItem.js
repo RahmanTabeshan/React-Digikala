@@ -1,7 +1,7 @@
 import {HiOutlineTrash} from "react-icons/hi" ;
 import { useDispatch } from "react-redux";
 import { money_format } from "../../../../Lists/Functions";
-import { decrement, increment, remove } from "../../../Redux/Cart/CartActions";
+import { decrement, increment, remove } from "../../../../Redux/Cart/CartActions";
 
 const CartItem = ({item}) => {
     const dispatch = useDispatch() ;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Layout from "../Components/Layout/Layout";
-import {addToCart, decrement, increment, remove} from "../Components/Redux/Cart/CartActions";
+import {addToCart, decrement, increment, remove} from "../Redux/Cart/CartActions";
 import { money_format, scrollToTop } from "../Lists/Functions";
 import {HiOutlineTrash} from "react-icons/hi" ;
 

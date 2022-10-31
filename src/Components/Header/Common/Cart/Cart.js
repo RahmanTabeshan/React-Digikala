@@ -14,7 +14,7 @@ const Cart = ({ className = "" }) => {
             <Link to="/checkout/cart/" className="relative">
                 <RiShoppingCartLine className="cart-icon transition-all duration-200 hover:text-stone-500" />
                 {Cart.length !== 0 && (
-                    <span className="absolute flex justify-center items-center h-6 w-6 rounded-full -right-2 -top-3 bg-red-500 text-xs text-white aspect-square">
+                    <span className="absolute flex justify-center items-center h-6 w-6 rounded-full -right-1 -top-3 bg-red-500 text-xs text-white aspect-square">
                         {CartSum}
                     </span>
                 )}

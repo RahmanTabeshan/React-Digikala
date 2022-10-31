@@ -1,11 +1,10 @@
-import Layout from "../Components/Layout/Layout" ;
+import Login from "../Components/Login/Login";
+
 const LoginPage = () => {
     return (
-        <Layout>
-            <main>
-                <h1>LoginPage</h1>
-            </main>
-        </Layout>
+        <main className="flex items-center justify-center !h-screen !min-h-max">
+            <Login />
+        </main>
     );
 }
  

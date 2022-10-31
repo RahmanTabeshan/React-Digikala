@@ -26,7 +26,7 @@ const CartResult = ({Cart}) => {
             </div>
             <div className="flex justify-between px-4 mt-5 text-sm">
                 <div>سود شما از این خرید : </div>
-                <div className="ltr">{money_format((sumPrice - percentPrice)+"0")} IR</div>
+                <div className="ltr">{money_format((sumPrice - percentPrice).toFixed()+"0")} IR</div>
             </div>
             <span className="block m-auto w-95% border-t border-t-blue-500 my-5"></span>
             <div className="flex justify-between px-4 mt-5 text-sm">

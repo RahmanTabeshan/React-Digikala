@@ -9,7 +9,7 @@ import NotFound from "./Pages/Not-Found";
 import ProductPage from "./Pages/ProductPage";
 import CartPage from "./Pages/CartPage";
 import { Provider } from "react-redux";
-import store from "./Components/Redux/Store";
+import store from "./Redux/Store";
 
 const App = () => {
     const [loading, setLoading] = useState(true);

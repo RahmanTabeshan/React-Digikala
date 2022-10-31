@@ -5,12 +5,12 @@ import ResponseHeader from "../Header/ResponseHeader/ResponseHeader";
 
 const Layout = ({ children }) => {
 
-    const desktop = useMediaQuery({minWidth:1024}) ;
+    const desktop = useMediaQuery({ minWidth: 1024 });
 
     return (
         <>
-            {desktop ? <DesktopHeader /> : <ResponseHeader/>}
-                {children}
+            {desktop ? <DesktopHeader /> : <ResponseHeader />}
+            {children}
             <Footer />
         </>
     );

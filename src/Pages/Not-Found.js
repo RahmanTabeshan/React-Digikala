@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import Layout from "../Components/Layout/Layout";
+import { scrollToTop } from "../Lists/Functions";
 
 const NotFound = () => {
+
+    useEffect(() => {
+        scrollToTop();
+    }, []);
+    
     return (
         <Layout>
             <main>
@@ -8,6 +15,6 @@ const NotFound = () => {
             </main>
         </Layout>
     );
-}
- 
+};
+
 export default NotFound;

@@ -6,7 +6,7 @@ const Login = () => {
     const [userName,setUserName]=useState("") ;
     return (
         <React.Fragment>
-            {userName ? userName  : <UserLog setUserName={setUserName} />}
+            {userName ? console.log(userName) : <UserLog userName={userName} setUserName={setUserName} />}
         </React.Fragment>
     );
 };

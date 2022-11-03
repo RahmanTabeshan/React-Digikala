@@ -33,11 +33,16 @@ module.exports = {
             fade : "fade 1s linear infinite alternate" ,
             fade2 : "fade 1s .2s linear infinite alternate" ,
             fade3 : "fade 1s .3s linear infinite alternate" ,
+            width : "width 5s linear",
         },
         keyframes:{
             fade : {
                 "0% , 100%" : {background:"#fff"} ,
                 "50%" : {background:"#4f4f4f"} ,
+            },
+            width : {
+                "0%" : {width : 0} ,
+                "100%" : {width : "100%"} ,
             }
         },
         gridTemplateColumns:{

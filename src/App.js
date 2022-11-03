@@ -15,6 +15,7 @@ const App = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        
         const onPageLoad = () => {
             setTimeout(() => {
                 setLoading(false);

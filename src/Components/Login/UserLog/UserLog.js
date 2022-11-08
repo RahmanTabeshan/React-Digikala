@@ -2,10 +2,10 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../Image/logo.svg";
-import Modal from "./Modal/Modal";
+import Logo from "../../../Image/logo.svg";
+import Modal from "../Modal/Modal";
 
-const UserLog = ({setUserName , userName }) => {
+const UserLog = ({setUserName}) => {
 
     const userInput = useRef() ;
 
@@ -44,24 +44,24 @@ const UserLog = ({setUserName , userName }) => {
         if(validateInput(user)){
             const users = JSON.parse(localStorage.getItem("users")) || [] ;
             if(user.type === "Email"){
-                const existUser = users.find(u=>(
-                    u.Email === user.name 
-                ))
+                const existUser = users.find(u=>u.Email === user.name)
                 if(existUser){
-                    setUserName({...user,validate:true}) ;
+                    setUserName(user) ;
                 }else{
                     setModal(true) ;
                     setTimeout(() => {
                         setModal(false) ;
-                    }, 5000);
-                    console.log("not exist user") //add modal
+                    }, 5200);
                 }
             }else if(user.type === "Phone"){
-                const existUser = users.find(u => (
-                    u.phone   === user.name 
-                ))
-                if(existUser){
-                    setUserName({...user , validate:true}) ;
+                const existUser = users.filter(u => u.phone === user.name)
+                if(existUser.length){
+                    const pass = existUser.find(user=>user.Password);
+                    if(pass){
+                        setUserName({...user , validate:true , pass:true}) ;
+                    }else{
+                        setUserName({...user , validate:true}) ;
+                    }
                 }else{
                     setUserName(user) ;
                 }
@@ -77,7 +77,7 @@ const UserLog = ({setUserName , userName }) => {
 
     return (
         <React.Fragment>
-            {modal ? <Modal modal={modal} /> : ""}
+            {modal ? <Modal /> : ""}
             <div className="flex flex-col border border-neutral-200 rounded-lg m-5 p-5 lg:p-8">
                 <div className="flex justify-center">
                     <Link to="/" className="w-[150px] h-[40px]">

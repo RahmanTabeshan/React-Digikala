@@ -10,9 +10,13 @@ const Login = () => {
         }else{
             if(userName.validate){
                 if(userName.pass){
-                    return <UserPass userName={userName} setUserName={setUserName} /> ;
+                    if(userName.code){
+                        // user exist password exist but login by code => code component 
+                    }else{
+                        return <UserPass userName={userName} setUserName={setUserName} /> ;
+                    }
                 }else{
-                    //code component
+                    //user exist but password not exist => code component
                 }
             }else{
                 // user not exist => code component

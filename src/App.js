@@ -1,21 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import 'react-loading-skeleton/dist/skeleton.css' ;
+import "react-loading-skeleton/dist/skeleton.css";
 import SiteLoading from "./Components/SiteLoading/SiteLoading";
 import HomePage from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
 import NotFound from "./Pages/Not-Found";
 import ProductPage from "./Pages/ProductPage";
 import CartPage from "./Pages/CartPage";
-import { Provider } from "react-redux";
-import store from "./Redux/Store";
+import { useDispatch } from "react-redux";
+import { CookiesProvider, useCookies } from "react-cookie";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import { AuthUser } from "./Redux/User/UserAction";
+import ForgotPage from "./Pages/ForgotPage";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
+    const [cookies] = useCookies();
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        
         const onPageLoad = () => {
             setTimeout(() => {
                 setLoading(false);
@@ -30,19 +36,41 @@ const App = () => {
             // Remove the event listener when component unmounts
             return () => window.removeEventListener("load", onPageLoad);
         }
+
+        if (cookies.user) {
+            const userId = cookies.user;
+            const users = JSON.parse(localStorage.getItem("users"));
+            const user = users.find((user) => user.id === userId);
+            dispatch(AuthUser(user));
+        }
     }, []);
 
-    if(loading) return <SiteLoading />;
+    if (loading) return <SiteLoading />;
     return (
-        <Provider store={store}>
+        <CookiesProvider>
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/users/login/" element={<LoginPage />} />
+                <Route
+                    path="/users/login/"
+                    element={
+                        <ProtectedRoute path="/">
+                            <LoginPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/users/password/forgot/"
+                    element={
+                        <ProtectedRoute path="/">
+                            <ForgotPage />
+                        </ProtectedRoute>
+                    }
+                />
                 <Route path="/Product/:id/:title/" element={<ProductPage />} />
                 <Route path="/checkout/cart/" element={<CartPage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </Provider>
+        </CookiesProvider>
     );
 };
 

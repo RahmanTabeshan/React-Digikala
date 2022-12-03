@@ -5,10 +5,10 @@ import { Fragment, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { useEffect } from "react";
 import Modal from "../../Login/Modal/Modal";
-import { EmailRegex, PhoneRegex } from "../../../Lists/Functions";
+import { EmailRegex, PhoneRegex} from "../../../Lists/Functions";
 import { useCookies } from "react-cookie";
 
-const ForgotUser = ({ setUserName }) => {
+const ForgotUser = ({ setUserName}) => {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -53,6 +53,7 @@ const ForgotUser = ({ setUserName }) => {
                         type = "Phone" ;
                     }
                     setUserName({name:user , type:type , code:true}) ;
+                    
                 }
             }else{
                 setModal(true) ;

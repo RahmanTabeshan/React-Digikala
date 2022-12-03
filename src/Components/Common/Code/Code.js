@@ -1,4 +1,5 @@
-import { Fragment } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Fragment, useEffect } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Modal from "../../Login/Modal/Modal";
@@ -8,17 +9,25 @@ import CountDown from "../../CountDown/CountDown";
 import { useCookies } from "react-cookie";
 import { random } from "../../../Lists/Functions";
 
-const Code = ({ userName, setUserName, submitHandle }) => {
+const Code = ({ userName, setUserName}) => {
     const [timer, setTimer] = useState(true);
     const [code, setCode] = useState("");
     const [error, setError] = useState("");
-    const [cookies, setCookies, removeCookies] = useCookies([]);
+    const [isCode,setIsCode] = useState(false);
+    const [cookies, setCookie, removeCookie] = useCookies([]);
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(
+        (u) => u.phone === userName.name || u.Email === userName.name
+    );
+    const codes = JSON.parse(localStorage.getItem("code")) || [];
+    const userCode = codes.find((c) => c.user_id === user.id);
 
     let randomCode;
-    if (!cookies.code) {
+    if (!isCode) {
         randomCode = random(10000, 99999);
     } else {
-        randomCode = cookies.code;
+        randomCode = userCode ? userCode.code : "" ;
     }
 
     const changeHandle = (e) => {
@@ -26,29 +35,62 @@ const Code = ({ userName, setUserName, submitHandle }) => {
     };
 
     const onStart = (expireTime) => {
+        const codes = JSON.parse(localStorage.getItem("code")) || [];
+        const userCodeIndex = codes.findIndex((c) => c.user_id === user.id);
+
         const date = new Date();
-        date.setTime(expireTime);
+        date.setTime(expireTime + 1000);
+
+        if (userCodeIndex === -1) {
+            const userCode = [
+                {
+                    id: random(0, 1000),
+                    user_id: user.id,
+                    code: randomCode,
+                },
+            ];
+            localStorage.setItem("code", JSON.stringify(userCode));
+        }
+
         if (!cookies.code) {
-            setCookies("code", randomCode, {
+            setCookie("code", randomCode, {
                 expires: date,
                 sameSite: "lax",
                 path: "/",
             });
         }
+        setIsCode(true)
     };
-    
+
     const onEnded = () => {
+        const codes = JSON.parse(localStorage.getItem("code")) || [];
+        const userCodeIndex = codes.findIndex((c) => c.user_id === user.id);
+        codes.splice(userCodeIndex, 1);
+        localStorage.setItem("code", JSON.stringify(codes));
+
+        removeCookie("code", { sameSite: "lax", path: "/" });
+        
         setTimer(false);
-        removeCookies("code", {
-            sameSite: "lax",
-            path: "/",
-        });
     };
+
+    const submitHandle = (e)=>{
+        e.preventDefault() ;
+        const inputCode = code.replaceAll("-","") ;
+        console.log(inputCode) ;
+        console.log(code) ;
+        console.log(cookies);
+        if(cookies.code){
+            console.log("ssaasas");
+        }
+    }
+    useEffect(()=>{
+        
+    },[])
 
     return (
         <Fragment>
             {timer ? (
-                <Modal message={`کد ورود یکبار مصرف شما ${randomCode}` }/>
+                <Modal message={`کد ورود یکبار مصرف شما ${randomCode}`} />
             ) : (
                 ""
             )}

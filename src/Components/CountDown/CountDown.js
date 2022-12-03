@@ -11,7 +11,9 @@ const CountDown = ({
     onStart,
     onChangeTime,
     seperator = ":",
+    ...props
 }) => {
+
     const timer = JSON.parse(localStorage.getItem("timer")) || {};
     const date = new Date();
     const nowSeconds = date.getSeconds();
@@ -106,10 +108,10 @@ const CountDown = ({
             ((minute === 0 && hour === 0) || (minute === 0 && !hour) || !minute)
         ) {
             clearInterval(count.current);
-            setEnd(true);
             if (onEnded) {
-                onEnded();
+                onEnded() ;
             }
+            setEnd(true);
         }
     }, [second, minute, hour]);
 

@@ -10,14 +10,14 @@ import NotFound from "./Pages/Not-Found";
 import ProductPage from "./Pages/ProductPage";
 import CartPage from "./Pages/CartPage";
 import { useDispatch } from "react-redux";
-import { CookiesProvider, useCookies } from "react-cookie";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { AuthUser } from "./Redux/User/UserAction";
 import ForgotPage from "./Pages/ForgotPage";
+import useCookie from "./Components/Common/useCookies/useCookies";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
-    const [cookies] = useCookies();
+    const [cookies] = useCookie();
 
     const dispatch = useDispatch();
 
@@ -47,30 +47,28 @@ const App = () => {
 
     if (loading) return <SiteLoading />;
     return (
-        <CookiesProvider>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route
-                    path="/users/login/"
-                    element={
-                        <ProtectedRoute path="/">
-                            <LoginPage />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/users/password/forgot/"
-                    element={
-                        <ProtectedRoute path="/">
-                            <ForgotPage />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route path="/Product/:id/:title/" element={<ProductPage />} />
-                <Route path="/checkout/cart/" element={<CartPage />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </CookiesProvider>
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+                path="/users/login/"
+                element={
+                    <ProtectedRoute path="/">
+                        <LoginPage />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/users/password/forgot/"
+                element={
+                    <ProtectedRoute path="/">
+                        <ForgotPage />
+                    </ProtectedRoute>
+                }
+            />
+            <Route path="/Product/:id/:title/" element={<ProductPage />} />
+            <Route path="/checkout/cart/" element={<CartPage />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
     );
 };
 

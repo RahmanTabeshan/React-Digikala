@@ -6,7 +6,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { useEffect } from "react";
 import Modal from "../../Login/Modal/Modal";
 import { EmailRegex, PhoneRegex} from "../../../Lists/Functions";
-import { useCookies } from "react-cookie";
+import useCookie from "../../Common/useCookies/useCookies";
 
 const ForgotUser = ({ setUserName}) => {
 
@@ -18,7 +18,7 @@ const ForgotUser = ({ setUserName}) => {
     const [error, setError] = useState("");
     const [modal, setModal] = useState(false);
     const [message,setMessage] = useState("") ;
-    const [cookies] = useCookies([]) ;
+    const [cookies] = useCookie() ;
 
     const changeHandle = (e) => {
         setUser(e.target.value);

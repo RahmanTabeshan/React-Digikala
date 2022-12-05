@@ -11,7 +11,6 @@ const CountDown = ({
     onStart,
     onChangeTime,
     seperator = ":",
-    ...props
 }) => {
 
     const timer = JSON.parse(localStorage.getItem("timer")) || {};
@@ -99,7 +98,7 @@ const CountDown = ({
         }
         setTimeout(() => {
             localStorage.removeItem("timer");
-        }, expire);
+        }, expire);;
     }, []);
 
     useEffect(() => {

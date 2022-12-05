@@ -6,10 +6,10 @@ import { FiArrowRight } from "react-icons/fi";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { Fragment, useRef, useState } from "react";
 import { useEffect } from "react";
-import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { AuthUser } from "../../../Redux/User/UserAction";
-import Success from "../../Modal/Success";
+import Success from "../../Common/Modal/Success"
+import useCookie from "../../Common/useCookies/useCookies";
 
 const UserPass = ({ userName, setUserName }) => {
 
@@ -20,7 +20,7 @@ const UserPass = ({ userName, setUserName }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [showPass, setShowPass] = useState(false);
-    const [setCookie] = useCookies(["user"]);
+    const [setCookie] = useCookie();
     const [modal, setModal] = useState(false);
 
     const changeHandle = (e) => {

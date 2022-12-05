@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 export function money_format(num) {
     var str = num.toString();
     if (str && str.length > 3) {
@@ -53,6 +54,17 @@ export function removeArrayItem(arr, value) {
     }
     return arr;
 }
+
+export const getAllCookies = ()=>{
+    let allCookies = {} ;
+    const cookies = document.cookie ;
+    const arrayCookies = cookies.split(";") ;
+    arrayCookies.forEach(c=>{
+        const arrayCookie = c.split("=") ;
+        allCookies[arrayCookie[0].replaceAll('"',"").trim()] = arrayCookie[1] ;
+    }) ;
+    return allCookies ;
+};
 
 export const EmailRegex = new RegExp(
     /[a-zA-z0-9]@(gmail|yahoo|hotmail)(.com)$/

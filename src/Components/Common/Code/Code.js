@@ -5,17 +5,15 @@ import { Link } from "react-router-dom";
 import Modal from "../../Login/Modal/Modal";
 import Logo from "../../../Image/logo.svg";
 import { useState } from "react";
-import CountDown from "../../CountDown/CountDown";
-import { useCookies } from "react-cookie";
-import { random } from "../../../Lists/Functions";
+import CountDown from "../CountDown/CountDown";
+import {getAllCookies, random} from "../../../Lists/Functions";
+import useCookie from "../useCookies/useCookies";
 
 const Code = ({ userName, setUserName}) => {
     const [timer, setTimer] = useState(true);
     const [code, setCode] = useState("");
     const [error, setError] = useState("");
-    const [isCode,setIsCode] = useState(false);
-    const [cookies, setCookie, removeCookie] = useCookies([]);
-
+    const [cookies,setCookie,removeCookie] = useCookie() ;
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(
         (u) => u.phone === userName.name || u.Email === userName.name
@@ -24,10 +22,11 @@ const Code = ({ userName, setUserName}) => {
     const userCode = codes.find((c) => c.user_id === user.id);
 
     let randomCode;
-    if (!isCode) {
+    if (!cookies.code) {
         randomCode = random(10000, 99999);
     } else {
-        randomCode = userCode ? userCode.code : "" ;
+        // randomCode = userCode ? userCode.code : "" ;
+        randomCode = cookies.code ;
     }
 
     const changeHandle = (e) => {
@@ -54,12 +53,11 @@ const Code = ({ userName, setUserName}) => {
 
         if (!cookies.code) {
             setCookie("code", randomCode, {
-                expires: date,
+                expire: 2*60*1000,
                 sameSite: "lax",
                 path: "/",
             });
         }
-        setIsCode(true)
     };
 
     const onEnded = () => {
@@ -75,17 +73,8 @@ const Code = ({ userName, setUserName}) => {
 
     const submitHandle = (e)=>{
         e.preventDefault() ;
-        const inputCode = code.replaceAll("-","") ;
-        console.log(inputCode) ;
-        console.log(code) ;
-        console.log(cookies);
-        if(cookies.code){
-            console.log("ssaasas");
-        }
+        console.log(cookies)
     }
-    useEffect(()=>{
-        
-    },[])
 
     return (
         <Fragment>

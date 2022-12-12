@@ -8,20 +8,28 @@ import { Fragment, useRef, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AuthUser } from "../../../Redux/User/UserAction";
-import Success from "../../Common/Modal/Success"
+import Success from "../../Common/Modal/Success";
 import useCookie from "../../Common/useCookies/useCookies";
 
 const UserPass = ({ userName, setUserName }) => {
-
     const dispatch = useDispatch();
     const passInput = useRef();
-    const navigate = useNavigate() ;
+    const navigate = useNavigate();
 
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [showPass, setShowPass] = useState(false);
-    const [setCookie] = useCookie();
+    // eslint-disable-next-line no-unused-vars
+    const [cookies , setCookie] = useCookie();
     const [modal, setModal] = useState(false);
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    let user;
+    if (userName.type === "Phone") {
+        user = users.find((u) => u.phone === userName.name);
+    } else {
+        user = users.find((u) => u.Email === userName.name);
+    }
 
     const changeHandle = (e) => {
         setPassword(e.target.value);
@@ -30,46 +38,37 @@ const UserPass = ({ userName, setUserName }) => {
     const submitHandle = (e) => {
         e.preventDefault();
         if (password) {
-            const users = JSON.parse(localStorage.getItem("users")) || [];
-            let user;
-            if (userName.type === "Phone") {
-                user = users.find((u) => u.phone === userName.name);
-            } else {
-                user = users.find((u) => u.Email === userName.name);
-            }
-
-            const date = new Date();
-            const time = date.getTime();
-            const expireTime = 30000; // base milisecond  1s => 1000ms
-            const expire = time + expireTime;
-            date.setTime(expire);
-
-            if(password === user.Password){
-                const {Password,...userAuth} = user ;
+            if (password === user.Password) {
+                const { Password, ...userAuth } = user;
                 setModal(true);
 
                 setTimeout(() => {
                     setCookie("user", user.id, {
                         path: "/",
-                        httpOnly: false,
                         sameSite: "lax",
-                        expires: date,
+                        expires: 1000 * 60 * 60 * 24 * 2,
                     });
                     dispatch(AuthUser(userAuth));
                     setModal(false);
                 }, 5250);
-            }else{
+            } else {
                 setError("رمز عبور معتبر نیست");
             }
-
         }
     };
 
     const codeHandle = () => {
         setPassword("");
         setError(false);
-        setUserName({...userName , code:true})
-    }
+        setUserName({ ...userName, code: true });
+    };
+
+    const forgotHandle = () => {
+        setCookie("fgt_pwd", true, {
+            sameSite: "lax",
+        });
+        navigate("/users/password/forgot/",{state:{userName}});
+    };
 
     useEffect(() => {
         passInput.current.focus();
@@ -120,9 +119,14 @@ const UserPass = ({ userName, setUserName }) => {
                                     <RiEyeLine className="text-xl font-bold" />
                                 )}
                             </span>
-                            
                         </div>
-                        {error ? <span className="block text-xs text-red-700 mt-2">{error}</span> : ""}
+                        {error ? (
+                            <span className="block text-xs text-red-700 mt-2">
+                                {error}
+                            </span>
+                        ) : (
+                            ""
+                        )}
                     </form>
                     <button
                         className="flex items-center text-xs text-blue-500 font-bold py-1 mt-3 leading-[2.17rem]"
@@ -131,8 +135,9 @@ const UserPass = ({ userName, setUserName }) => {
                         ورود با رمز یک‌بار‌مصرف
                         <IoIosArrowBack className="mr-1 text-sm" />
                     </button>
-                    <button className="flex items-center text-xs text-blue-500 font-bold py-1 mt-3 leading-[2.17rem]"
-                    onClick={()=>navigate("/users/password/forgot/",{state:{userName}})}
+                    <button
+                        className="flex items-center text-xs text-blue-500 font-bold py-1 mt-3 leading-[2.17rem]"
+                        onClick={forgotHandle}
                     >
                         فراموشی رمز عبور
                         <IoIosArrowBack className="mr-1 text-sm" />

@@ -1,24 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link,useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../../Image/logo.svg";
 import { Fragment, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { useEffect } from "react";
 import Modal from "../../Login/Modal/Modal";
-import { EmailRegex, PhoneRegex} from "../../../Lists/Functions";
+import { EmailRegex, PhoneRegex } from "../../../Lists/Functions";
 import useCookie from "../../Common/useCookies/useCookies";
 
-const ForgotUser = ({ setUserName}) => {
-
+const ForgotUser = ({ setUserName }) => {
+    // eslint-disable-next-line no-unused-vars
+    const [cookies, setCookie, removeCookie] = useCookie();
     const navigate = useNavigate();
     const location = useLocation();
-    const username = location.state ? location.state.userName : "";
 
     const [user, setUser] = useState("");
     const [error, setError] = useState("");
     const [modal, setModal] = useState(false);
-    const [message,setMessage] = useState("") ;
-    const [cookies] = useCookie() ;
+    const [message, setMessage] = useState("");
 
     const changeHandle = (e) => {
         setUser(e.target.value);
@@ -30,52 +29,61 @@ const ForgotUser = ({ setUserName}) => {
         const existUser = users.find(
             (u) => u.phone === user || u.Email === user
         );
-        const code = JSON.parse(localStorage.getItem("code")) || [] ;
+        const code = JSON.parse(localStorage.getItem("code")) || [];
         if (!user) {
             setError("شماره موبایل یا ایمیل خود را وارد کنید");
         } else if (!PhoneRegex.test(user) && !EmailRegex.test(user)) {
             setError("شماره موبایل یا ایمیل خود را به درستی وارد کنید");
         } else {
             setError("");
-            if(existUser){
-                const existCode = code.find(c => c.user_id === existUser.id) ; 
-                if(!existCode && cookies.code){
-                    setMessage("تعداد درخواست بیش از حد مجاز است.") ;
+            if (existUser) {
+                const existCode = code.find((c) => c.user_id === existUser.id);
+                if (!existCode && cookies.code) {
+                    setMessage("تعداد درخواست بیش از حد مجاز است.");
                     setModal(true);
                     setTimeout(() => {
-                        setModal(false) ;
+                        setModal(false);
                     }, 5100);
-                }else{
-                    let type ;
-                    if(EmailRegex.test(user)){
-                        type = "Email" ;
-                    }else{
-                        type = "Phone" ;
+                } else {
+                    setUser("");
+                    let type;
+                    if (EmailRegex.test(user)) {
+                        type = "Email";
+                    } else {
+                        type = "Phone";
                     }
-                    setUserName({name:user , type:type , code:true}) ;
-                    
+                    setUserName({ name: user, type: type, code: true });
                 }
-            }else{
-                setModal(true) ;
-                setMessage("حساب کاربری با این نام وجود ندارد.") ;
+            } else {
+                setModal(true);
+                setMessage("حساب کاربری با این نام وجود ندارد.");
                 setTimeout(() => {
-                    setModal(false) ;
+                    setModal(false);
                 }, 5100);
             }
         }
     };
 
     useEffect(() => {
-        setUser(username.name || "");
+
+        if (!cookies.fgt_pwd) {
+            navigate(location.pathname, { state: {} });
+        }
+
+        const username = location.state?.userName && cookies.fgt_pwd
+            ? location.state.userName.name
+            : "";
+        setUser(username);
+
+        return () => {
+            removeCookie("fgt_pwd", { sameSite: "lax" });
+        };
+
     }, []);
 
     return (
         <Fragment>
-            {modal ? (
-                <Modal message={message} />
-            ) : (
-                ""
-            )}
+            {modal ? <Modal message={message} /> : ""}
             <div className="flex flex-col w-[400px] border border-neutral-200 rounded-lg m-5 p-5 lg:p-8">
                 <div className="relative flex justify-center items-center">
                     <Link to="/" className="w-[150px] h-[40px]">

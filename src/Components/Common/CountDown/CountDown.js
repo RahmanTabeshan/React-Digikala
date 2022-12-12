@@ -12,7 +12,6 @@ const CountDown = ({
     onChangeTime,
     seperator = ":",
 }) => {
-
     const timer = JSON.parse(localStorage.getItem("timer")) || {};
     const date = new Date();
     const nowSeconds = date.getSeconds();
@@ -94,11 +93,14 @@ const CountDown = ({
         }
 
         if (onStart) {
-            onStart(expireTime);
+            onStart(expire);
         }
+
         setTimeout(() => {
+
             localStorage.removeItem("timer");
-        }, expire);;
+            
+        }, expire);
     }, []);
 
     useEffect(() => {
@@ -108,7 +110,7 @@ const CountDown = ({
         ) {
             clearInterval(count.current);
             if (onEnded) {
-                onEnded() ;
+                onEnded();
             }
             setEnd(true);
         }

@@ -14,6 +14,7 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { AuthUser } from "./Redux/User/UserAction";
 import ForgotPage from "./Pages/ForgotPage";
 import useCookie from "./Components/Common/useCookies/useCookies";
+import ResetPage from "./Pages/ResetPasswordPage";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -65,6 +66,7 @@ const App = () => {
                     </ProtectedRoute>
                 }
             />
+            <Route path="/users/password/reset/" element={<ResetPage />} />
             <Route path="/Product/:id/:title/" element={<ProductPage />} />
             <Route path="/checkout/cart/" element={<CartPage />} />
             <Route path="*" element={<NotFound />} />

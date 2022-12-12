@@ -1,44 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Modal from "../../Login/Modal/Modal";
 import Logo from "../../../Image/logo.svg";
 import { useState } from "react";
 import CountDown from "../CountDown/CountDown";
-import {getAllCookies, random} from "../../../Lists/Functions";
+import { random } from "../../../Lists/Functions";
 import useCookie from "../useCookies/useCookies";
 
-const Code = ({ userName, setUserName}) => {
+const Code = ({ userName, setUserName , validCode }) => {
     const [timer, setTimer] = useState(true);
     const [code, setCode] = useState("");
     const [error, setError] = useState("");
-    const [cookies,setCookie,removeCookie] = useCookie() ;
+    const [cookies, setCookie, removeCookie] = useCookie();
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(
         (u) => u.phone === userName.name || u.Email === userName.name
     );
-    const codes = JSON.parse(localStorage.getItem("code")) || [];
-    const userCode = codes.find((c) => c.user_id === user.id);
 
     let randomCode;
     if (!cookies.code) {
         randomCode = random(10000, 99999);
     } else {
-        // randomCode = userCode ? userCode.code : "" ;
-        randomCode = cookies.code ;
+        randomCode = cookies.code;
     }
 
     const changeHandle = (e) => {
         setCode(e.target.value);
     };
 
-    const onStart = (expireTime) => {
+    const onStart = (expire) => {
         const codes = JSON.parse(localStorage.getItem("code")) || [];
         const userCodeIndex = codes.findIndex((c) => c.user_id === user.id);
-
-        const date = new Date();
-        date.setTime(expireTime + 1000);
 
         if (userCodeIndex === -1) {
             const userCode = [
@@ -53,7 +47,7 @@ const Code = ({ userName, setUserName}) => {
 
         if (!cookies.code) {
             setCookie("code", randomCode, {
-                expire: 2*60*1000,
+                expire: expire + 1000,
                 sameSite: "lax",
                 path: "/",
             });
@@ -67,14 +61,40 @@ const Code = ({ userName, setUserName}) => {
         localStorage.setItem("code", JSON.stringify(codes));
 
         removeCookie("code", { sameSite: "lax", path: "/" });
-        
+
         setTimer(false);
     };
 
-    const submitHandle = (e)=>{
-        e.preventDefault() ;
-        console.log(cookies)
-    }
+    const submitHandle = (e) => {
+        e.preventDefault();
+        const userCode = code.replaceAll("-", "").trim();
+        if (!userCode) {
+            setError("لطفا کد تایید را وارد کنید");
+        } else {
+            if (userCode.length < 5) {
+                setError("لطفا کد تایید را به شکل صحیح وارد کنید");
+            } else {
+                const codes = JSON.parse(localStorage.getItem("code")) || [];
+                const codeUser = codes.find((c) => c.user_id === user.id);
+
+                if (parseInt(userCode) === parseInt(codeUser.code)) {
+                    setError("");
+                    setCode("");
+
+                    const userCodeIndex = codes.findIndex((c) => c.user_id === user.id);
+                    codes.splice(userCodeIndex, 1);
+                    localStorage.setItem("code", JSON.stringify(codes));
+
+                    localStorage.removeItem("timer");
+                    removeCookie("code", { sameSite: "lax", path: "/" });
+
+                    validCode() ;
+                } else {
+                    setError("کد وارد شده صحیح نیست");
+                }
+            }
+        }
+    };
 
     return (
         <Fragment>
@@ -111,7 +131,9 @@ const Code = ({ userName, setUserName}) => {
                     <form onSubmit={(e) => submitHandle(e)}>
                         <div className="flex flex-col justify-center items-center w-full relative">
                             <input
-                                className="w-full h-12 border border-blue-400 rounded-lg text-base text-neutral-700 text-center tracking-[1em] font-normal pr-4 pl-9 py-2 font-sego"
+                                className={`w-full h-12 border ${
+                                    error ? "border-red-400" : "border-blue-400"
+                                } rounded-lg text-base text-neutral-700 text-center tracking-[1em] font-normal pr-4 pl-9 py-2 font-sego`}
                                 type="text"
                                 autoComplete="false"
                                 onChange={changeHandle}

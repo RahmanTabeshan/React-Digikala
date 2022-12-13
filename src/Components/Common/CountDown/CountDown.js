@@ -18,7 +18,7 @@ const CountDown = ({
     const nowMinutes = date.getMinutes();
     const nowHours = date.getHours();
     let expireSecond, expireMinute, expireHour;
-    if (timer.expire) {
+    if (timer.expire && timer.expire > Date.now()) {
         date.setTime(timer.expire);
         expireSecond = date.getSeconds() - nowSeconds;
         expireMinute = date.getMinutes() - nowMinutes;
@@ -36,9 +36,9 @@ const CountDown = ({
         expireHour = expireHour + 60;
     }
 
-    const newHour = timer.expire ? expireHour : hours;
-    const newMinute = timer.expire ? expireMinute : minutes;
-    const newSecond = timer.expire ? expireSecond : seconds;
+    const newHour = timer.expire && timer.expire > Date.now() ? expireHour : hours;
+    const newMinute = timer.expire && timer.expire > Date.now() ? expireMinute : minutes;
+    const newSecond = timer.expire && timer.expire > Date.now() ? expireSecond : seconds;
 
     const [hour, setHour] = useState(parseInt(newHour));
     const [minute, setMinute] = useState(parseInt(newMinute));
@@ -93,13 +93,11 @@ const CountDown = ({
         }
 
         if (onStart) {
-            onStart(expire);
+            onStart(expire,timer);
         }
 
         setTimeout(() => {
-
             localStorage.removeItem("timer");
-            
         }, expire);
     }, []);
 
@@ -112,6 +110,7 @@ const CountDown = ({
             if (onEnded) {
                 onEnded();
             }
+            localStorage.removeItem("timer");
             setEnd(true);
         }
     }, [second, minute, hour]);

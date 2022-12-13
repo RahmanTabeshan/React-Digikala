@@ -74,11 +74,7 @@ const ForgotUser = ({ setUserName }) => {
             ? location.state.userName.name
             : "";
         setUser(username);
-
-        return () => {
-            removeCookie("fgt_pwd", { sameSite: "lax" });
-        };
-
+        
     }, []);
 
     return (

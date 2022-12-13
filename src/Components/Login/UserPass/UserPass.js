@@ -46,7 +46,7 @@ const UserPass = ({ userName, setUserName }) => {
                     setCookie("user", user.id, {
                         path: "/",
                         sameSite: "lax",
-                        expires: 1000 * 60 * 60 * 24 * 2,
+                        expire: 1000 * 60 * 60 * 24 * 2,
                     });
                     dispatch(AuthUser(userAuth));
                     setModal(false);
@@ -54,6 +54,8 @@ const UserPass = ({ userName, setUserName }) => {
             } else {
                 setError("رمز عبور معتبر نیست");
             }
+        }else{
+            setError("لطفا رمز عبور خود را وارد کنید")
         }
     };
 

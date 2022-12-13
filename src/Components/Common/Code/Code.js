@@ -30,11 +30,11 @@ const Code = ({ userName, setUserName , validCode }) => {
         setCode(e.target.value);
     };
 
-    const onStart = (expire) => {
+    const onStart = (expire,timer) => {
         const codes = JSON.parse(localStorage.getItem("code")) || [];
         const userCodeIndex = codes.findIndex((c) => c.user_id === user.id);
 
-        if (userCodeIndex === -1) {
+        if (userCodeIndex === -1 || timer.expire < Date.now()) {
             const userCode = [
                 {
                     id: random(0, 1000),

@@ -42,7 +42,8 @@ const App = () => {
             const userId = cookies.user;
             const users = JSON.parse(localStorage.getItem("users"));
             const user = users.find((user) => user.id === userId);
-            dispatch(AuthUser(user));
+            const {Password , ...userAuth} = user ;
+            dispatch(AuthUser(userAuth));
         }
     }, []);
 

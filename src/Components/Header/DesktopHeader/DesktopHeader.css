@@ -1,7 +1,7 @@
 .header {
     display: flex;
     flex-direction: column;
-    align-items: center ;
+    align-items: center;
     width: 100%;
     /* max-width: 1366px; */
     z-index: 6;
@@ -11,7 +11,7 @@ header .top-header {
     display: flex;
     padding: 12px 0;
     width: 100%;
-    max-width: 97% ;
+    max-width: 97%;
     background-color: #fff;
     z-index: 2;
 }
@@ -33,7 +33,7 @@ header .top-header {
     padding: 0 16px;
     background-color: #f0f0f1;
     border-radius: 8px;
-    z-index: 1 ;
+    z-index: 1;
 }
 .search-box::before {
     content: "\e089";
@@ -54,7 +54,7 @@ header .top-header {
 .search {
     position: relative;
     font-family: "IranYekan_Fa";
-    font-size: 14px ;
+    font-size: 14px;
     font-weight: normal;
     padding: 0 33px 0 0;
     background-color: #f0f0f1;
@@ -131,7 +131,7 @@ div.top-group a {
     min-width: 202px;
     display: flex;
     align-items: center;
-    justify-content: flex-end ;
+    justify-content: flex-end;
 }
 .users-operation {
     display: flex;
@@ -141,9 +141,11 @@ div.top-group a {
     padding: 0 8px;
 }
 .users-operation a {
+    display: flex;
+    align-items: center;
     font-size: 13px;
     color: #444;
-    padding: 10px 0;
+    padding: 8px 0;
     font-weight: bold;
     transition: color 0.1s linear;
 }

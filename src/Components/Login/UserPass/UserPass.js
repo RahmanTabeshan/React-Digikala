@@ -41,7 +41,6 @@ const UserPass = ({ userName, setUserName }) => {
             if (password === user.Password) {
                 const { Password, ...userAuth } = user;
                 setModal(true);
-
                 setTimeout(() => {
                     setCookie("user", user.id, {
                         path: "/",
@@ -50,7 +49,7 @@ const UserPass = ({ userName, setUserName }) => {
                     });
                     dispatch(AuthUser(userAuth));
                     setModal(false);
-                }, 5250);
+                }, 2750);
             } else {
                 setError("رمز عبور معتبر نیست");
             }

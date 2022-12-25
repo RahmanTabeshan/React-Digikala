@@ -1,0 +1,9 @@
+.list li a {
+    border-top: 1px solid rgb(222, 222, 222);
+}
+.list li {
+    transition: .1s all linear;
+}
+.list li:hover{
+    background-color: rgb(229, 229, 229) ;
+}

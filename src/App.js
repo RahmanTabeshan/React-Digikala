@@ -15,6 +15,7 @@ import { AuthUser } from "./Redux/User/UserAction";
 import ForgotPage from "./Pages/ForgotPage";
 import useCookie from "./Components/Common/useCookies/useCookies";
 import ResetPage from "./Pages/ResetPasswordPage";
+import WelcomePage from "./Pages/WelcomePage";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -41,8 +42,8 @@ const App = () => {
         if (cookies.user) {
             const userId = cookies.user;
             const users = JSON.parse(localStorage.getItem("users"));
-            const user = users.find((user) => user.id === userId);
-            const {Password , ...userAuth} = user ;
+            const user = users.find((user) => parseInt(user.id) === parseInt(userId));
+            const { Password, ...userAuth } = user;
             dispatch(AuthUser(userAuth));
         }
     }, []);
@@ -68,8 +69,9 @@ const App = () => {
                 }
             />
             <Route path="/users/password/reset/" element={<ResetPage />} />
-            <Route path="/Product/:id/:title/" element={<ProductPage />} />
-            <Route path="/checkout/cart/" element={<CartPage />} />
+            <Route path="users/welcome/" element={<WelcomePage />} />
+            <Route path="Product/:id/:title/" element={<ProductPage />} />
+            <Route path="checkout/cart/" element={<CartPage />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );

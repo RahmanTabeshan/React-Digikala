@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "../../Login/Modal/Modal";
 import Logo from "../../../Image/logo.svg";
 import { useState } from "react";
@@ -9,15 +9,16 @@ import CountDown from "../CountDown/CountDown";
 import { random } from "../../../Lists/Functions";
 import useCookie from "../useCookies/useCookies";
 
-const Code = ({ userName, setUserName , validCode }) => {
+const Code = ({ userName, setUserName, validCode }) => {
     const [timer, setTimer] = useState(true);
     const [code, setCode] = useState("");
     const [error, setError] = useState("");
     const [cookies, setCookie, removeCookie] = useCookie();
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(
-        (u) => u.phone === userName.name || u.Email === userName.name
-    );
+    const user =
+        users.find(
+            (u) => u.phone === userName.name || u.Email === userName.name
+        ) || userName.name;
 
     let randomCode;
     if (!cookies.code) {
@@ -30,18 +31,18 @@ const Code = ({ userName, setUserName , validCode }) => {
         setCode(e.target.value);
     };
 
-    const onStart = (expire,timer) => {
+    const onStart = (expire, timer) => {
         const codes = JSON.parse(localStorage.getItem("code")) || [];
         const userCodeIndex = codes.findIndex((c) => c.user_id === user.id);
 
         if (userCodeIndex === -1 || timer.expire < Date.now()) {
-            const userCode = [
-                {
-                    id: random(0, 1000),
-                    user_id: user.id,
-                    code: randomCode,
-                },
-            ];
+            const newCode = {
+                id: random(0, 1000),
+                code: randomCode,
+            };
+            user.id ? (newCode.user_id = user.id) : (newCode.user_name = user);
+            const userCode = [{ ...newCode }];
+
             localStorage.setItem("code", JSON.stringify(userCode));
         }
 
@@ -75,20 +76,24 @@ const Code = ({ userName, setUserName , validCode }) => {
                 setError("لطفا کد تایید را به شکل صحیح وارد کنید");
             } else {
                 const codes = JSON.parse(localStorage.getItem("code")) || [];
-                const codeUser = codes.find((c) => c.user_id === user.id);
+                const codeUser = codes.find(
+                    (c) => c.user_id === user.id || c.user_name === user
+                );
 
                 if (parseInt(userCode) === parseInt(codeUser.code)) {
                     setError("");
                     setCode("");
 
-                    const userCodeIndex = codes.findIndex((c) => c.user_id === user.id);
+                    const userCodeIndex = codes.findIndex(
+                        (c) => c.user_id === user.id || c.user_name === user
+                    );
                     codes.splice(userCodeIndex, 1);
                     localStorage.setItem("code", JSON.stringify(codes));
 
                     localStorage.removeItem("timer");
                     removeCookie("code", { sameSite: "lax", path: "/" });
 
-                    validCode() ;
+                    validCode();
                 } else {
                     setError("کد وارد شده صحیح نیست");
                 }
@@ -124,7 +129,9 @@ const Code = ({ userName, setUserName , validCode }) => {
                         کد تایید را وارد کنید
                     </h1>
                     <p className="text-xs text-neutral-600 my-4 leading-[2.17]">
-                        {userName.type === "Phone"
+                        {userName.forRegister
+                            ? `حساب کاربری با شماره موبایل ${userName.name} وجود ندارد. برای ساخت حساب جدید،کد تایید برای این شماره ارسال گردید.`
+                            : userName.type === "Phone"
                             ? `کد تایید برای شماره ${userName.name} ارسال شد`
                             : `کد تایید به ایمیل ${userName.name} ارسال شد`}
                     </p>

@@ -28,8 +28,10 @@ const UserLog = ({ setUserName }) => {
     const changeHandle = (e) => {
         if (EmailRegex.test(e.target.value)) {
             setUser({ name: e.target.value, type: "Email" });
+            setError(false) ;
         } else if (PhoneRegex.test(e.target.value)) {
             setUser({ name: e.target.value, type: "Phone" });
+            setError(false) ;
         } else {
             setUser({ name: e.target.value });
         }
@@ -59,7 +61,7 @@ const UserLog = ({ setUserName }) => {
                         setUserName({ ...user, validate: true });
                     }
                 } else {
-                    setUserName(user);
+                    setUserName({...user , forRegister:true});
                 }
             }
         } else {

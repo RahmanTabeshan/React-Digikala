@@ -6,6 +6,8 @@ import Search from "../Common/Search/Search";
 import UserOperation from "./UserOpration/UserOperation";
 import Navigation from "./Navigation/Navigation";
 import Cart from "../Common/Cart/Cart";
+import { useSelector } from "react-redux";
+import UserAccount from "./UserAccount/UserAccount";
 
 const DesktopHeader = () => {
 
@@ -14,6 +16,7 @@ const DesktopHeader = () => {
         searchResult : Styles.search_result,
         searchResultFocus:Styles.search_result_focus,
     }
+    const userAuth = useSelector(state => state.User) ;
 
     return (
         <>
@@ -24,7 +27,7 @@ const DesktopHeader = () => {
                         <Search styles={styles} />
                     </div>
                     <div className='top-left-header'>
-                        <UserOperation />
+                        {userAuth ? <UserAccount /> : <UserOperation /> }
                         <span></span>
                         <Cart className="cart" />
                     </div>

@@ -54,7 +54,7 @@ const UserPass = ({ userName, setUserName }) => {
                 setError("رمز عبور معتبر نیست");
             }
         }else{
-            setError("لطفا رمز عبور خود را وارد کنید")
+            setError("لطفا رمز عبور خود را وارد کنید");
         }
     };
 

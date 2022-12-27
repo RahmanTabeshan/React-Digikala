@@ -16,6 +16,7 @@ import ForgotPage from "./Pages/ForgotPage";
 import useCookie from "./Components/Common/useCookies/useCookies";
 import ResetPage from "./Pages/ResetPasswordPage";
 import WelcomePage from "./Pages/WelcomePage";
+import ProtectWelcome from "./Components/ProtectedRoute/ProtectWelcome";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -42,7 +43,9 @@ const App = () => {
         if (cookies.user) {
             const userId = cookies.user;
             const users = JSON.parse(localStorage.getItem("users"));
-            const user = users.find((user) => parseInt(user.id) === parseInt(userId));
+            const user = users.find(
+                (user) => parseInt(user.id) === parseInt(userId)
+            );
             const { Password, ...userAuth } = user;
             dispatch(AuthUser(userAuth));
         }
@@ -69,9 +72,16 @@ const App = () => {
                 }
             />
             <Route path="/users/password/reset/" element={<ResetPage />} />
-            <Route path="users/welcome/" element={<WelcomePage />} />
-            <Route path="Product/:id/:title/" element={<ProductPage />} />
-            <Route path="checkout/cart/" element={<CartPage />} />
+            <Route
+                path="/users/welcome/"
+                element={
+                    <ProtectWelcome path="/">
+                        <WelcomePage />
+                    </ProtectWelcome>
+                }
+            />
+            <Route path="/Product/:id/:title/" element={<ProductPage />} />
+            <Route path="/checkout/cart/" element={<CartPage />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );

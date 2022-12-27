@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { random } from "../../Lists/Functions";
+import { addData } from "../../Redux/TransferData/TransferReducer";
 import { AuthUser } from "../../Redux/User/UserAction";
 import Code from "../Common/Code/Code";
 import useCookie from "../Common/useCookies/useCookies";
@@ -21,6 +22,7 @@ const Login = () => {
         users.push(user);
         localStorage.setItem("users", JSON.stringify(users));
         navigate("/users/welcome/");
+        dispatch(addData()) ;
         setTimeout(() => {
             setCookie("user", user.id, {
                 path: "/",

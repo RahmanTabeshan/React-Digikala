@@ -74,7 +74,6 @@ const ForgotUser = ({ setUserName }) => {
             ? location.state.userName.name
             : "";
         setUser(username);
-        
     }, []);
 
     return (

@@ -7,7 +7,7 @@ const ProtectedRoute = ({path,children}) => {
     const [cookies] = useCookie();
     const user = useSelector(state => state.User) ;
     if(cookies.user || user ){
-        return <Navigate to={path} replace />;
+        return <Navigate to={path} replace={true} />;
     }
     return children ;
 }

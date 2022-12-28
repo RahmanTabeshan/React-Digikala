@@ -3,11 +3,15 @@ import { useDispatch } from "react-redux";
 import { Link} from "react-router-dom";
 import welcome from "../../Image/welcome/welcome-to-dk.png";
 import { removeData } from "../../Redux/TransferData/TransferReducer";
+import useCookie from "../Common/useCookies/useCookies";
 
 const Welcome = () => {
     const dispatch = useDispatch() ;
+    // eslint-disable-next-line no-unused-vars
+    const [cookies,setCookie,removeCookie] = useCookie() ;
     useEffect(()=>{
         return ()=>{
+            removeCookie("welcome",{sameSite:"lax"}) ;
             dispatch(removeData()) ;
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps

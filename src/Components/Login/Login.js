@@ -22,7 +22,7 @@ const Login = () => {
         users.push(user);
         localStorage.setItem("users", JSON.stringify(users));
         navigate("/users/welcome/");
-        dispatch(addData()) ;
+        dispatch(addData("welcome")) ;
         setTimeout(() => {
             setCookie("user", user.id, {
                 path: "/",

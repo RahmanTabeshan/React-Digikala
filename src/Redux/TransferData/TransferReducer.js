@@ -6,8 +6,13 @@ const initialState = false;
 const TransferReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_DATA: {
-            const newState = true;
-            return newState;
+            let newState = {} ; 
+            if(action.data === "welcome"){
+                newState.welcome = true ;
+            }else if(action.data === "reset"){
+                newState.reset = true ;
+            }
+            return newState ;
         }
 
         case REMOVE_DATA: {
@@ -22,9 +27,10 @@ const TransferReducer = (state = initialState, action) => {
 
 export default TransferReducer;
 
-export const addData = () => {
+export const addData = (data) => {
     return {
         type: ADD_DATA,
+        data: data,
     };
 };
 export const removeData = () => {
